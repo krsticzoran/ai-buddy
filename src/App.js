@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import MyCard from "./components/Card";
+import UserInputs from "./components/UserInput";
 
-function App() {
+const App = () => {
+  const [messages, setMessages] = useState([]);
+
+  const handleSend = (inputValue) => {
+    setMessages((prevState) => [...prevState, inputValue]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MyCard messages={messages} />
+      <UserInputs></UserInputs>
+      <button onClick={() => handleSend(inputValue)}>Send</button>
     </div>
   );
-}
+};
 
 export default App;
