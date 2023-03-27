@@ -1,12 +1,29 @@
 import React, { useState } from "react";
+import SendButton from "../SendButton";
+import { InputGroup, FormControl } from "react-bootstrap";
 
-const UserInputs = () => {
-  const [inputValue, setInputValue] = useState("");
+const UserInput = (props) => {
+  const [input, setInput] = useState("");
+
+  const handleClick = () => {
+    props.onData(input);
+  };
 
   const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+    setInput(event.target.value);
   };
-  return <input type="text" value={inputValue} onChange={handleInputChange} />;
+
+  return (
+    <InputGroup className="mb-3">
+      <FormControl
+        placeholder="Type your message here"
+        type="text"
+        value={input}
+        onChange={handleInputChange}
+      />
+      <SendButton onClick={handleClick}></SendButton>
+    </InputGroup>
+  );
 };
 
-export default UserInputs;
+export default UserInput;
