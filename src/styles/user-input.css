@@ -1,0 +1,11 @@
+.form-control:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.container-input {
+  height: 30vh !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

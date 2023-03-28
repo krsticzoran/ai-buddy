@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import "../styles/my-card.css";
+import { Container, Row, Col } from "react-bootstrap";
 
 const MyCard = (props) => {
   const cardRef = useRef(null);
@@ -10,13 +11,19 @@ const MyCard = (props) => {
   }, [props.messages]);
 
   return (
-    <div className="my-card" ref={cardRef}>
-      <Card className="border-0">
-        {props.messages.map((message, index) => (
-          <Card.Body key={index}>{message}</Card.Body>
-        ))}
-      </Card>
-    </div>
+    <Container className="card-bacgorund-color">
+      <Row className="justify-content-center">
+        <Col md={10}>
+          <div className="my-card " ref={cardRef}>
+            <Card className="border-0 chat-card-color">
+              {props.messages.map((message, index) => (
+                <Card.Body key={index}>{message}</Card.Body>
+              ))}
+            </Card>
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
