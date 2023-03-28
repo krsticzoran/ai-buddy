@@ -36,7 +36,7 @@ const UserInput = (props) => {
                 value={input}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
-                className="border-0"
+                className="border-0 form-control"
               />
               <div
                 className=" position-absolute top-50 end-0 translate-middle-y"

@@ -2,9 +2,12 @@
   outline: none !important;
   box-shadow: none !important;
 }
+.form-control {
+  background-color: #8ab0cd !important;
+}
 .container-input {
   height: 30vh !important;
-
+  background-color: #6c757d;
   display: flex;
   align-items: center;
   justify-content: center;

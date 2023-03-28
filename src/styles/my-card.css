@@ -2,10 +2,11 @@
   height: 70vh;
   overflow-y: auto;
 }
+
 .card-bacgorund-color {
-  background-color: #ffffff !important;
+  background-color: #8ab0cd;
 }
 
 .chat-card-color {
-  background-color: #6c757d !important;
+  background-color: #8ab0cd !important;
 }
