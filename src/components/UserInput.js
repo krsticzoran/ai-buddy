@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SendButton from "../SendButton";
+import SendButton from "./SendButton";
 import { InputGroup, FormControl } from "react-bootstrap";
 
 const UserInput = (props) => {
@@ -7,10 +7,19 @@ const UserInput = (props) => {
 
   const handleClick = () => {
     props.onData(input);
+    setInput("");
   };
 
   const handleInputChange = (event) => {
     setInput(event.target.value);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      props.onData(input);
+      setInput("");
+    }
   };
 
   return (
@@ -20,6 +29,7 @@ const UserInput = (props) => {
         type="text"
         value={input}
         onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
       />
       <SendButton onClick={handleClick}></SendButton>
     </InputGroup>
