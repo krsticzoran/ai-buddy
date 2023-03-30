@@ -43,7 +43,11 @@ const UserInput = (props) => {
                 onClick={props.onClick}
                 style={{ zIndex: "999" }}
               >
-                <SendButton onClick={handleClick}></SendButton>
+                <SendButton
+                  isLoading={props.isLoading}
+                  onClick={handleClick}
+                ></SendButton>
+
                 <Microphone></Microphone>
               </div>
             </InputGroup>

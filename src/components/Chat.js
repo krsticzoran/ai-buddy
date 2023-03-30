@@ -6,15 +6,22 @@ import UserInputs from "./UserInput";
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
-  const [response, setResponse] = useState([]);
+  const [chat, setChat] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (messages.length) {
       const fetchData = async () => {
+        setLoading(true);
+
         const response = await axios.post(
           "https://api.openai.com/v1/engines/text-davinci-003/completions",
           {
-            prompt: `${messages.slice(-1)[0]}`,
+            prompt: `This is your previous answer:${
+              chat[chat.length - 2]
+            }Please answer on this question based on your previous answer:${messages.slice(
+              -1
+            )}`,
             max_tokens: 200,
             temperature: 0.7,
           },
@@ -25,26 +32,26 @@ const Chat = () => {
             },
           }
         );
+        setLoading(false);
+
         handleAnswer(response.data.choices[0].text);
-        console.log(response.data.choices[0].text);
       };
       fetchData();
     }
   }, [messages]);
 
   const handleAnswer = (answer) => {
-    setResponse((prevMessages) => [...prevMessages, answer]);
+    setChat((prevMessages) => [...prevMessages, answer]);
   };
-
   const handleData = (input) => {
+    setChat((prevMessages) => [...prevMessages, input]);
     setMessages((prevMessages) => [...prevMessages, input]);
-    setResponse((prevMessages) => [...prevMessages, input]);
   };
 
   return (
     <div>
-      <MyCard messages={response} />
-      <UserInputs onData={handleData}></UserInputs>
+      <MyCard messages={chat} />
+      <UserInputs isLoading={loading} onData={handleData}></UserInputs>
     </div>
   );
 };
