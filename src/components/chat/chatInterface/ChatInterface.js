@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { apiKey } from "../config";
-import MyCard from "./Card.js";
-import UserInputs from "./UserInput";
+import { apiKey } from "../../../config";
+import ChatCard from "./ChatCard";
+import UserInput from "../form/userInput/UserInput";
 
-const Chat = () => {
+const ChatInterface = () => {
   const [messages, setMessages] = useState([]);
   const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -49,11 +49,11 @@ const Chat = () => {
   };
 
   return (
-    <div>
-      <MyCard messages={chat} />
-      <UserInputs isLoading={loading} onData={handleData}></UserInputs>
-    </div>
+    <>
+      <ChatCard messages={chat} />
+      <UserInput isLoading={loading} onData={handleData}></UserInput>
+    </>
   );
 };
 
-export default Chat;
+export default ChatInterface;

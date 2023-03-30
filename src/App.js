@@ -1,9 +1,9 @@
 import React from "react";
 
-import AppContainer from "./components/Container";
+import ChatPage from "./components/chatPage/ChatPage.js";
 
 const App = () => {
-  return <AppContainer></AppContainer>;
+  return <ChatPage></ChatPage>;
 };
 
 export default App;

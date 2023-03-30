@@ -5,7 +5,10 @@ const SendButton = (props) => {
   return props.isLoading ? (
     <LoadingDots />
   ) : (
-    <button className="border-0 btn btn-outline-secondary">
+    <button
+      onClick={props.onClick}
+      className="border-0 btn btn-outline-secondary"
+    >
       <i className="fa fa-paper-plane "></i>
     </button>
   );

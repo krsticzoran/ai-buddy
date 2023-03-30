@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { Card } from "react-bootstrap";
-import "../styles/my-card.css";
+import "./chat-card.css";
 import { Container, Row, Col } from "react-bootstrap";
 
-const MyCard = (props) => {
+const ChatCard = (props) => {
   const cardRef = useRef(null);
 
   useEffect(() => {
@@ -27,4 +27,4 @@ const MyCard = (props) => {
   );
 };
 
-export default MyCard;
+export default ChatCard;

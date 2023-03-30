@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Chat from "./Chat";
-import MenuContainer from "./MenuContainer";
+import ChatInterface from "../chat/chatInterface/ChatInterface";
+import MenuContainer from "../menu/MenuContainer";
 
-const AppContainer = (props) => {
+const ChatPage = (props) => {
   return (
     <Container fluid className="g-0 ">
       <Row className="g-0 ">
@@ -11,11 +11,11 @@ const AppContainer = (props) => {
           <MenuContainer></MenuContainer>
         </Col>
         <Col md={9}>
-          <Chat></Chat>
+          <ChatInterface></ChatInterface>
         </Col>
       </Row>
     </Container>
   );
 };
 
-export default AppContainer;
+export default ChatPage;
