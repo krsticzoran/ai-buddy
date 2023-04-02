@@ -35,6 +35,7 @@ const UserInput = (props) => {
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         className="border-0 form-control"
+        disabled={props.isLoading}
       />
       <ButtonContainer>
         <SendButton
