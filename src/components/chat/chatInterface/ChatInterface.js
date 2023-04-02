@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { apiKey } from "../../../config";
+
 import ChatCard from "./ChatCard";
 import UserInput from "../form/userInput/UserInput";
+
+const apiKey = process.env.REACT_APP_API_KEY;
 
 const ChatInterface = () => {
   const [messages, setMessages] = useState([]);
