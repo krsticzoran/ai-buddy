@@ -1,53 +1,41 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-
+import { Configuration, OpenAIApi } from "openai";
 import ChatCard from "./ChatCard";
 import UserInput from "../form/userInput/UserInput";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const ChatInterface = () => {
-  const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState([]);
   const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (messages.length) {
+    if (message.length) {
       const fetchData = async () => {
         setLoading(true);
+        const configuration = new Configuration({
+          apiKey: apiKey,
+        });
+        const openai = new OpenAIApi(configuration);
+        const response = await openai.createChatCompletion({
+          model: "gpt-3.5-turbo",
+          messages: [{ role: "user", content: `${message.slice(-1)}` }],
+        });
 
-        const response = await axios.post(
-          "https://api.openai.com/v1/engines/text-davinci-003/completions",
-          {
-            prompt: `This is your previous answer:${
-              chat[chat.length - 2]
-            }Please answer on this question based on your previous answer:${messages.slice(
-              -1
-            )}`,
-            max_tokens: 200,
-            temperature: 0.7,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${apiKey}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
         setLoading(false);
-
-        handleAnswer(response.data.choices[0].text);
+        handleAnswer(response.data.choices[0].message.content);
       };
       fetchData();
     }
-  }, [messages]);
+  }, [message]);
 
   const handleAnswer = (answer) => {
     setChat((prevMessages) => [...prevMessages, answer]);
   };
   const handleData = (input) => {
-    setChat((prevMessages) => [...prevMessages, input]);
-    setMessages((prevMessages) => [...prevMessages, input]);
+    setChat((prevMessage) => [...prevMessage, input]);
+    setMessage((prevMessage) => [...prevMessage, input]);
   };
 
   return (

@@ -34,7 +34,9 @@ const UserInput = (props) => {
         value={input}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
-        className="border-0 form-control"
+        className={
+          props.isLoading ? "border-0 form-disabled" : "border-0 form-control"
+        }
         disabled={props.isLoading}
       />
       <ButtonContainer>
@@ -43,7 +45,7 @@ const UserInput = (props) => {
           onClick={handleClick}
         ></SendButton>
 
-        <Microphone></Microphone>
+        {input == "" && <Microphone />}
       </ButtonContainer>
     </FormContainer>
   );
