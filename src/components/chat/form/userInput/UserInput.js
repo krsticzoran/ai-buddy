@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import SendButton from "../button/SendButton";
-import Microphone from "../button/Microphone";
 import FormContainer from "../formContainer/FormContainer";
 import ButtonContainer from "../button/ButtonContainer";
 import { FormControl } from "react-bootstrap";
@@ -39,14 +37,11 @@ const UserInput = (props) => {
         }
         disabled={props.isLoading}
       />
-      <ButtonContainer>
-        <SendButton
-          isLoading={props.isLoading}
-          onClick={handleClick}
-        ></SendButton>
-
-        {input == "" && <Microphone />}
-      </ButtonContainer>
+      <ButtonContainer
+        isLoading={props.isLoading}
+        onClick={handleClick}
+        input={input}
+      ></ButtonContainer>
     </FormContainer>
   );
 };

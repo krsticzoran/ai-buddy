@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./button.css";
 
-const LoadingDots = () => {
+const RecordingDots = () => {
   const [dots, setDots] = useState(".");
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setDots((prevDots) => {
-        if (prevDots.length >= 3) {
-          return ".";
-        } else {
-          return prevDots + ".";
-        }
+        return prevDots + ".";
       });
     }, 300);
     return () => clearInterval(intervalId);
@@ -22,4 +18,4 @@ const LoadingDots = () => {
   );
 };
 
-export default LoadingDots;
+export default RecordingDots;
