@@ -9,12 +9,11 @@ const ButtonContainer = (props) => {
   const [isRecording, setIsRecording] = useState(false);
   const handleOnMouseDown = () => {
     setIsRecording(true);
-    console.log("start");
   };
   const handleOnMouseUp = () => {
     setIsRecording(false);
-    console.log("finished");
   };
+
   return (
     <div className=" position-absolute top-50 end-0 translate-middle-y button-container">
       {!isRecording && (
@@ -24,7 +23,7 @@ const ButtonContainer = (props) => {
         ></SendButton>
       )}
 
-      {isRecording && <RecordingDots />}
+      {isRecording && <RecordingDots handleOnMouseUp={handleOnMouseUp} />}
 
       {props.input == "" && (
         <Microphone
