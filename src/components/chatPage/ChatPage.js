@@ -7,10 +7,10 @@ const ChatPage = (props) => {
   return (
     <Container fluid className="g-0 ">
       <Row className="g-0 ">
-        <Col md={3}>
+        <Col md={2}>
           <MenuContainer></MenuContainer>
         </Col>
-        <Col md={9}>
+        <Col md={10}>
           <ChatInterface></ChatInterface>
         </Col>
       </Row>

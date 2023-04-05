@@ -1,5 +1,5 @@
 .my-card {
-  height: 70vh;
+  height: 80vh;
   overflow-y: auto;
 }
 
@@ -9,4 +9,12 @@
 
 .chat-card-color {
   background-color: #8ab0cd !important;
+}
+.chat-card-color-dark {
+  background-color: #658ba7;
+}
+
+.chat-card-padding {
+  padding-left: 10% !important;
+  padding-right: 10% !important;
 }

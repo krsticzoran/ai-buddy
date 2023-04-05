@@ -12,17 +12,22 @@ const ChatCard = (props) => {
 
   return (
     <Container className="card-bacgorund-color">
-      <Row className="justify-content-center">
-        <Col md={10}>
-          <div className="my-card " ref={cardRef}>
-            <Card className="border-0 chat-card-color">
-              {props.messages.map((message, index) => (
-                <Card.Body key={index}>{message}</Card.Body>
-              ))}
-            </Card>
-          </div>
-        </Col>
-      </Row>
+      <div className="my-card " ref={cardRef}>
+        <Card className="border-0 ">
+          {props.messages.map((message, index) => (
+            <div
+              key={index}
+              className={
+                index % 2 == 0 ? "chat-card-color" : "chat-card-color-dark"
+              }
+            >
+              <Card.Body className="chat-card-padding text-dark">
+                {message}
+              </Card.Body>
+            </div>
+          ))}
+        </Card>
+      </div>
     </Container>
   );
 };
