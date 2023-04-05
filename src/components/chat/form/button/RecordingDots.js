@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./button.css";
 
 const RecordingDots = (props) => {
-  const [dots, setDots] = useState(".");
+  const [dots, setDots] = useState("");
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -14,14 +13,16 @@ const RecordingDots = (props) => {
   }, []);
 
   useEffect(() => {
-    if (dots.length > 30) {
-      console.log("olaa");
+    if (dots.length > 65) {
       props.handleOnMouseUp();
     }
   }, [dots]);
 
   return (
-    <p className="border-0 btn btn-outline-secondary loading-dots">{dots}</p>
+    <p className="border-0 btn btn-outline-secondary loading-dots">
+      <span className="text-danger">{dots.substring(60)}</span>
+      {dots.substring(0, 60)}
+    </p>
   );
 };
 

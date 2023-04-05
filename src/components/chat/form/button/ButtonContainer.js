@@ -1,36 +1,50 @@
 import { useState, useEffect } from "react";
 import "./button.css";
 import RecordingDots from "./RecordingDots";
+import { useSpeechRecognition } from "react-speech-kit";
 
 import SendButton from "./SendButton";
 import Microphone from "./Microphone";
 
 const ButtonContainer = (props) => {
-  const [isRecording, setIsRecording] = useState(false);
-  const handleOnMouseDown = () => {
-    setIsRecording(true);
-  };
-  const handleOnMouseUp = () => {
-    setIsRecording(false);
-  };
+  const [value, setValue] = useState("");
+  const { listen, stop } = useSpeechRecognition({
+    onResult: (result) => {
+      setValue(result);
+    },
+  });
+
+  useEffect(() => {
+    let timeoutId = null;
+    if (props.isRecording) {
+      listen();
+    }
+    if (!props.isRecording && value !== "") {
+      timeoutId = setTimeout(() => {
+        props.handleVoiceInput(value);
+        stop();
+        setValue("");
+      }, 1000);
+    }
+    return () => clearTimeout(timeoutId);
+  }, [props.isRecording]);
 
   return (
     <div className=" position-absolute top-50 end-0 translate-middle-y button-container">
-      {!isRecording && (
-        <SendButton
-          isLoading={props.isLoading}
-          onClick={props.handleClick}
-        ></SendButton>
+      {!props.isRecording && (
+        <SendButton isLoading={props.isLoading} onClick={props.onClick} />
       )}
 
-      {isRecording && <RecordingDots handleOnMouseUp={handleOnMouseUp} />}
+      {props.isRecording && <RecordingDots handleOnMouseUp={props.onMouseUp} />}
 
-      {props.input == "" && (
+      {props.input === "" && (
         <Microphone
-          onMouseDown={handleOnMouseDown}
-          onMouseUp={handleOnMouseUp}
-          onTouchStart={handleOnMouseDown}
-          onTouchEnd={handleOnMouseUp}
+          onMouseDown={props.onMouseDown}
+          onMouseUp={props.onMouseUp}
+          onTouchStart={props.onMouseDown}
+          onTouchEnd={props.onMouseUp}
+          isRecording={props.isRecording}
+          handleVoiceInput={props.handleVoiceInput}
         />
       )}
     </div>

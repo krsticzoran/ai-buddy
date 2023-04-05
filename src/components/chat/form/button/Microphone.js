@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 const Microphone = (props) => {
   return (
     <button

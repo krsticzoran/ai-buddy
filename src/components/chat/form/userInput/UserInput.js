@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FormContainer from "../formContainer/FormContainer";
 import ButtonContainer from "../button/ButtonContainer";
 import { FormControl } from "react-bootstrap";
@@ -6,11 +6,32 @@ import "./user-input.css";
 
 const UserInput = (props) => {
   const [input, setInput] = useState("");
+  const [voice, setVoice] = useState("");
+  const [isRecording, setIsRecording] = useState(false);
+
+  const handleOnMouseDown = () => {
+    setIsRecording(true);
+  };
+  const handleOnMouseUp = () => {
+    setIsRecording(false);
+  };
 
   const handleClick = () => {
     props.onData(input);
     setInput("");
   };
+
+  const handleVoiceInput = (value) => {
+    setVoice(value);
+  };
+
+  useEffect(() => {
+    if (voice.length) {
+      console.log(voice);
+      props.onData(voice);
+      setVoice("");
+    }
+  }, [voice]);
 
   const handleInputChange = (event) => {
     setInput(event.target.value);
@@ -27,7 +48,7 @@ const UserInput = (props) => {
   return (
     <FormContainer>
       <FormControl
-        placeholder="Type your message here"
+        placeholder={isRecording ? "" : "Type your message here"}
         type="text"
         value={input}
         onChange={handleInputChange}
@@ -41,6 +62,12 @@ const UserInput = (props) => {
         isLoading={props.isLoading}
         onClick={handleClick}
         input={input}
+        isRecording={isRecording}
+        onMouseDown={handleOnMouseDown}
+        onMouseUp={handleOnMouseUp}
+        onTouchStart={handleOnMouseDown}
+        onTouchEnd={handleOnMouseUp}
+        handleVoiceInput={handleVoiceInput}
       ></ButtonContainer>
     </FormContainer>
   );
