@@ -9,6 +9,7 @@ const ChatInterface = () => {
   const [message, setMessage] = useState([]);
   const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [answer, setAnswer] = useState("");
 
   useEffect(() => {
     if (message.length) {
@@ -24,6 +25,8 @@ const ChatInterface = () => {
         });
 
         setLoading(false);
+        setAnswer(response.data.choices[0].message.content);
+
         handleAnswer(response.data.choices[0].message.content);
       };
       fetchData();
@@ -41,7 +44,11 @@ const ChatInterface = () => {
   return (
     <>
       <ChatCard messages={chat} />
-      <UserInput isLoading={loading} onData={handleData}></UserInput>
+      <UserInput
+        isLoading={loading}
+        onData={handleData}
+        answer={answer}
+      ></UserInput>
     </>
   );
 };

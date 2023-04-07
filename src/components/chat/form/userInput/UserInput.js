@@ -68,6 +68,7 @@ const UserInput = (props) => {
         onTouchStart={handleOnMouseDown}
         onTouchEnd={handleOnMouseUp}
         handleVoiceInput={handleVoiceInput}
+        answer={props.answer}
       ></ButtonContainer>
     </FormContainer>
   );

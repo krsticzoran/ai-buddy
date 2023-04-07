@@ -5,6 +5,7 @@ import { useSpeechRecognition } from "react-speech-kit";
 
 import SendButton from "./SendButton";
 import Microphone from "./Microphone";
+import Sound from "./Sound";
 
 const ButtonContainer = (props) => {
   const [value, setValue] = useState("");
@@ -47,6 +48,7 @@ const ButtonContainer = (props) => {
           handleVoiceInput={props.handleVoiceInput}
         />
       )}
+      <Sound answer={props.answer}></Sound>
     </div>
   );
 };

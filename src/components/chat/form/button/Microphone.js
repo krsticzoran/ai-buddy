@@ -9,7 +9,7 @@ const Microphone = (props) => {
       onTouchStart={props.onTouchStart}
       onTouchEnd={props.onTouchEnd}
     >
-      <i className="fas fa-microphone "></i>;
+      <i className="fas fa-microphone "></i>
     </button>
   );
 };
