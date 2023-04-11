@@ -3,7 +3,7 @@ import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 import AppPage from "./pages/AppPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
-import AuthContext from "./store/auth-contex";
+import { AuthContextProvider } from "./store/auth-contex";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -17,11 +17,7 @@ const App = () => {
   };
 
   return (
-    <AuthContext.Provider
-      value={{
-        isLoggedIn: isLoggedIn,
-      }}
-    >
+    <AuthContextProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/app" element={<AppPage />} />
@@ -30,7 +26,7 @@ const App = () => {
           <Route path="/" element={<Navigate to="/signup" />} />
         </Routes>
       </BrowserRouter>
-    </AuthContext.Provider>
+    </AuthContextProvider>
   );
 };
 

@@ -1,13 +1,21 @@
-import backgroundImage from "../../robot.png";
+import { Container, Row } from "react-bootstrap";
+import Logout from "./logout/Logout";
 
 const MenuContainer = () => {
   return (
-    <div
+    <Container
+      fluid
       style={{
         background: "#658BA7",
         height: "100vh",
       }}
-    ></div>
+    >
+      <Row style={{ height: "10%" }}></Row>
+      <Row style={{ height: "80%" }}></Row>
+      <Row style={{ height: "10%" }}>
+        <Logout></Logout>
+      </Row>
+    </Container>
   );
 };
 
