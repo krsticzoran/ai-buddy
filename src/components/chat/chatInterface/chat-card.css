@@ -3,15 +3,25 @@
   overflow-y: auto;
 }
 
-.card-bacgorund-color {
-  background-color: #8ab0cd;
+.card-background {
+  background-color: #000313 !important;
 }
 
 .chat-card-color {
-  background-color: #8ab0cd !important;
+  background-color: #143066 !important;
+
+  border-radius: 0.5rem;
+}
+.chat-card-color .card-body {
+  color: #eaedf2 !important;
 }
 .chat-card-color-dark {
-  background-color: #658ba7;
+  background-color: #e3e6ea;
+  border-radius: 0.5rem;
+}
+
+.chat-card-color-dark .card-body {
+  color: #01163e !important;
 }
 
 .chat-card-padding {

@@ -2,7 +2,7 @@ import { Container, Row, Col, InputGroup } from "react-bootstrap";
 import "./form-container.css";
 const FormContainer = (props) => {
   return (
-    <div className="container-input bg-secondary">
+    <div className="container-input">
       <Container>
         <Row className="justify-content-center">
           <Col md={10}>

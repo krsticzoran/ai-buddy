@@ -5,8 +5,8 @@ const MenuContainer = () => {
   return (
     <Container
       fluid
+      className="p-3"
       style={{
-        background: "#658BA7",
         height: "100vh",
       }}
     >
