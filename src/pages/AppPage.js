@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ChatInterface from "../components/chat/chatInterface/ChatInterface";
-import MenuContainer from "../components/menu/MenuContainer";
+import MenuContainer from "../components/menu/menuContainer/MenuContainer";
 import { AuthContext } from "../store/auth-contex";
 import { Navigate } from "react-router-dom";
 

@@ -1,0 +1,11 @@
+.new-chat {
+  border: 1px solid #e4e4e4 !important;
+  color: #e4e4e4 !important;
+}
+
+.new-chat:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+.new-chat-padding {
+  padding: 1rem 0.75rem;
+}

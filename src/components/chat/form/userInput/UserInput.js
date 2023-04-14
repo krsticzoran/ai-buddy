@@ -54,7 +54,9 @@ const UserInput = (props) => {
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         className={
-          props.isLoading ? "border-0 form-disabled" : "border-0 form-control "
+          props.isLoading
+            ? "border-0 form-disabled py-3 "
+            : "border-0 form-control py-3 "
         }
         disabled={props.isLoading}
       />

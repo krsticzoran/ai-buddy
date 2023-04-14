@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./button.css";
 
 const Sound = (props) => {
   const [soundOn, setSoundOn] = useState(true);
@@ -27,7 +28,7 @@ const Sound = (props) => {
     <button
       answer={props.answer}
       onClick={toggleSound}
-      className="border-0 btn btn-outline-secondary"
+      className="border-0 btn button-color"
     >
       {soundOn ? (
         <i className="fa-solid fa-volume-high"></i>

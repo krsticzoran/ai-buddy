@@ -1,11 +1,14 @@
 .form-control {
+  background-color: #ffffff !important;
   outline: none !important;
   box-shadow: none !important;
   color: #01163e !important;
+  border-radius: 0.75rem !important;
 }
 
 .form-disabled {
-  background-color: #658ba7 !important;
+  background-color: #635f5f !important;
   outline: none !important;
   box-shadow: none !important;
+  border-radius: 0.75rem !important;
 }

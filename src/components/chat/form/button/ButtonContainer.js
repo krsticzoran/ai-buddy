@@ -31,7 +31,7 @@ const ButtonContainer = (props) => {
   }, [props.isRecording]);
 
   return (
-    <div className=" position-absolute top-50 end-0 translate-middle-y button-container">
+    <div className=" position-absolute top-50 end-0 translate-middle-y button-container px-3">
       {!props.isRecording && (
         <SendButton isLoading={props.isLoading} onClick={props.onClick} />
       )}

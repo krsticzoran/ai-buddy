@@ -1,6 +1,10 @@
 .loading-dots {
   font-size: 2.5rem !important;
+  color: #01163fcc !important;
 }
 .button-container {
   z-index: 999;
+}
+.button-color {
+  color: #01163fcc;
 }
