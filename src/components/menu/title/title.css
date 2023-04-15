@@ -8,10 +8,10 @@
   color: #e4e4e4;
   background-color: transparent;
   border: 0;
-  padding: 2rem 0.5rem;
+  padding: 2rem 0;
   height: 15vh;
 }
 
-title:hover {
+.title:hover {
   color: #e4e4e4 !important;
 }

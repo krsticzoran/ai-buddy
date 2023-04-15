@@ -4,9 +4,11 @@ import "./account.css";
 
 const Account = () => {
   return (
-    <div className="account ">
-      <ClearCoversation></ClearCoversation>
-      <Logout></Logout>
+    <div className="account px-3">
+      <div className="account-border">
+        <ClearCoversation></ClearCoversation>
+        <Logout></Logout>
+      </div>
     </div>
   );
 };

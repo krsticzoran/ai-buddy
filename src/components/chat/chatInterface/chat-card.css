@@ -1,6 +1,6 @@
 .my-card {
-  height: 80vh;
   overflow-y: auto;
+  height: 80vh;
 }
 
 .card-background {

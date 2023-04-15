@@ -7,5 +7,9 @@
   background-color: rgba(255, 255, 255, 0.2) !important;
 }
 .new-chat-padding {
-  padding: 1rem 0.75rem;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: #000313 !important;
 }

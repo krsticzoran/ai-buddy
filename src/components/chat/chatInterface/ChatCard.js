@@ -14,7 +14,7 @@ const ChatCard = (props) => {
     <Container>
       <Row className="justify-content-center ">
         <Col md={10}>
-          <div className="my-card " ref={cardRef}>
+          <div className="my-card pt-3" ref={cardRef}>
             <Card className="card-background border-0 flex flex-col gap-3">
               {props.messages.map((message, index) => (
                 <div

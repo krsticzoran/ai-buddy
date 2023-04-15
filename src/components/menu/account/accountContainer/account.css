@@ -1,5 +1,7 @@
 .account {
-  border-top: 1px solid #202238 !important;
-  padding: 0.75rem !important;
   height: 15vh;
+}
+.account-border {
+  border-top: 1px solid #202238 !important;
+  padding: 0.75rem 0 !important;
 }

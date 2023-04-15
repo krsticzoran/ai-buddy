@@ -1,4 +1,12 @@
 .chat-history {
   height: 70vh;
   overflow-y: auto;
+  position: relative;
+}
+.button-history {
+  color: #e4e4e4 !important;
+}
+
+.button-history:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
 }
