@@ -1,12 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import FormContainer from "../components/form/FormContainer";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { app, db, auth } from "../firebase.js";
+import { getDatabase, ref, set } from "firebase/database";
 
 const SignUpForm = () => {
+  const handleSignUp = async (event) => {
+    event.preventDefault();
+    const { email, password, username } = event.target.elements;
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email.value,
+        password.value
+      );
+      const uid = userCredential.user.uid;
+
+      await set(ref(db, `users/${uid}`), {
+        email: email.value,
+        username: username.value,
+      });
+      console.log(uid);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <FormContainer>
       <h5 className="card-title mb-4">Sign Up</h5>
-      <form>
+      <form onSubmit={handleSignUp}>
         <div className="mb-3">
           <label htmlFor="username" className="form-label">
             Username
