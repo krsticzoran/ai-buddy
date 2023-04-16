@@ -26,7 +26,7 @@ const ChatHistory = () => {
           key={index}
           className="button-history btn text-start rounded-lg text-decoration-none w-100"
         >
-          <i class="fa-regular fa-message me-2"></i>
+          <i className="fa-regular fa-message me-2"></i>
           <span className="me-2">{chat}</span>
         </button>
       ))}

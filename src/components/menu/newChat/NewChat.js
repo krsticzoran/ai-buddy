@@ -4,7 +4,7 @@ const NewChat = () => {
   return (
     <div className="new-chat-padding">
       <button className="new-chat btn text-start rounded-lg text-decoration-none w-100 ">
-        <i class="fa-solid fa-plus me-2"></i>
+        <i className="fa-solid fa-plus me-2"></i>
         <span>New chat</span>
       </button>
     </div>
