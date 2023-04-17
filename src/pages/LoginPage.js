@@ -1,18 +1,42 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
+import React, { useContext, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import FormContainer from "../components/form/FormContainer";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { app, db, auth } from "../firebase.js";
+import { AuthContext } from "../store/auth-contex";
 
 const LoginPage = () => {
+  const authCtx = useContext(AuthContext);
+  const [loginError, setLoginError] = useState(null);
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    const { email, password } = event.target.elements;
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email.value,
+        password.value
+      );
+      authCtx.login();
+    } catch (error) {
+      setLoginError(error.message);
+    }
+  };
+
+  if (authCtx.isLoggedIn) {
+    return <Navigate to="/app" />;
+  }
+
   return (
     <FormContainer>
       <h5 className="card-title mb-4">Login</h5>
-      <form>
+      <form onSubmit={handleLogin}>
         <div className="mb-3">
-          <label htmlFor="username" className="form-label">
-            Username
+          <label htmlFor="email" className="form-label">
+            Email address
           </label>
-          <input type="text" className="form-control" id="username" />
+          <input type="email" className="form-control" id="email" />
         </div>
 
         <div className="mb-3">
@@ -21,6 +45,13 @@ const LoginPage = () => {
           </label>
           <input type="password" className="form-control" id="password" />
         </div>
+
+        {loginError && (
+          <div className="alert alert-danger" role="alert">
+            {"Incorrect email or password. Please try again."}
+          </div>
+        )}
+
         <div className="d-grid gap-2">
           <button type="submit" className="btn btn-primary">
             Login

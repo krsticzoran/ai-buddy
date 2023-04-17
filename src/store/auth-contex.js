@@ -7,7 +7,7 @@ const AuthContext = React.createContext({
 });
 
 const AuthContextProvider = (props) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const loginHandler = () => {
     setIsLoggedIn(true);

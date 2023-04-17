@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import FormContainer from "../components/form/FormContainer";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { app, db, auth } from "../firebase.js";
 import { getDatabase, ref, set } from "firebase/database";
+import { AuthContext } from "../store/auth-contex";
+import { Navigate } from "react-router-dom";
 
 const SignUpForm = () => {
+  const authCtx = useContext(AuthContext);
+
   const handleSignUp = async (event) => {
     event.preventDefault();
     const { email, password, username } = event.target.elements;
@@ -21,11 +25,15 @@ const SignUpForm = () => {
         email: email.value,
         username: username.value,
       });
-      console.log(uid);
+
+      authCtx.login();
     } catch (error) {
       console.error(error);
     }
   };
+  if (authCtx.isLoggedIn) {
+    return <Navigate to="/app" />;
+  }
 
   return (
     <FormContainer>
