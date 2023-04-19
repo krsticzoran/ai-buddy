@@ -1,33 +1,37 @@
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../store/auth-contex";
 import NewChat from "../newChat/NewChat";
 import "./chat-history.css";
-
-const myDummyArray = [
-  "conversation 1",
-  "conversation 2",
-  "some conv",
-  "english translate",
-  "chat",
-  "advice",
-  "javascript",
-  "react",
-  "java",
-  "html",
-  "css",
-  "advice",
-  "happy new year",
-];
+import { get, ref } from "firebase/database";
+import { db } from "../../../firebase";
 
 const ChatHistory = () => {
+  const authCtx = useContext(AuthContext);
+  const [title, setTitle] = useState({});
+
+  useEffect(() => {
+    const getUserData = async () => {
+      if (authCtx.uid) {
+        const snapshot = await get(ref(db, `users/${authCtx.uid}/history`));
+        if (snapshot.exists()) {
+          setTitle(snapshot.val());
+          console.log(snapshot.val());
+        }
+      }
+    };
+    getUserData();
+  }, [authCtx.uid]);
+
   return (
     <div className="chat-history px-3">
       <NewChat></NewChat>
-      {myDummyArray.map((chat, index) => (
+      {Object.keys(title).map((key) => (
         <button
-          key={index}
+          key={key}
           className="button-history btn text-start rounded-lg text-decoration-none w-100"
         >
           <i className="fa-regular fa-message me-2"></i>
-          <span className="me-2">{chat}</span>
+          <span className="me-2">{key}</span>
         </button>
       ))}
     </div>

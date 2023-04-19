@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Configuration, OpenAIApi } from "openai";
 import ChatCard from "./ChatCard";
 import UserInput from "../form/userInput/UserInput";
+import { AuthContext } from "../../../store/auth-contex";
+import { set, ref } from "firebase/database";
+import { db } from "../../../firebase";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const ChatInterface = () => {
+  const authCtx = useContext(AuthContext);
   const [message, setMessage] = useState([]);
   const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(false);
   const [answer, setAnswer] = useState("");
+  const [title, setTitle] = useState("");
 
   useEffect(() => {
     if (message.length) {
@@ -19,9 +24,27 @@ const ChatInterface = () => {
           apiKey: apiKey,
         });
         const openai = new OpenAIApi(configuration);
+        if (message.length == 1) {
+          const response = await openai.createChatCompletion({
+            model: "gpt-3.5-turbo",
+            messages: [
+              {
+                role: "user",
+                content: `What would you like to call this chat? Based on this question: ${message[0]}`,
+              },
+            ],
+          });
+
+          setTitle(response.data.choices[0].message.content);
+        }
         const response = await openai.createChatCompletion({
           model: "gpt-3.5-turbo",
-          messages: [{ role: "user", content: `${message.slice(-1)}` }],
+          messages: [
+            {
+              role: "user",
+              content: `${message.slice(-1)}`,
+            },
+          ],
         });
 
         setLoading(false);
@@ -40,6 +63,19 @@ const ChatInterface = () => {
     setChat((prevMessage) => [...prevMessage, input]);
     setMessage((prevMessage) => [...prevMessage, input]);
   };
+
+  useEffect(() => {
+    const setTitleData = async () => {
+      if (title) {
+        const snapshot = await set(
+          ref(db, `users/${authCtx.uid}/history/${title}`),
+          { chat }
+        );
+        console.log(`Created new folder: ${title}`);
+      }
+    };
+    setTitleData();
+  }, [title, chat]);
 
   return (
     <>
