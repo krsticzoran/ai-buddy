@@ -32,7 +32,7 @@ const SignUpForm = () => {
         email: email.value,
         username: username.value,
       });
-
+      authCtx.addId(uid);
       authCtx.login();
     } catch (error) {
       console.error(error);
@@ -56,6 +56,7 @@ const SignUpForm = () => {
             type="text"
             className="form-control"
             id="username"
+            maxLength={15}
           />
         </div>
         <div className="mb-3">

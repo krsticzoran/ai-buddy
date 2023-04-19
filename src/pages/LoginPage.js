@@ -18,6 +18,8 @@ const LoginPage = () => {
         email.value,
         password.value
       );
+      const uid = userCredential.user.uid;
+      authCtx.addId(uid);
       authCtx.login();
     } catch (error) {
       setLoginError(error.message);
