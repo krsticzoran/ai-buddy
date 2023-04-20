@@ -5,6 +5,7 @@ import UserInput from "../form/userInput/UserInput";
 import { AuthContext } from "../../../store/auth-contex";
 import { set, ref } from "firebase/database";
 import { db } from "../../../firebase";
+import { ChatContext } from "../../../store/chat-context";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -15,6 +16,7 @@ const ChatInterface = () => {
   const [loading, setLoading] = useState(false);
   const [answer, setAnswer] = useState("");
   const [title, setTitle] = useState("");
+  const chatCtx = useContext(ChatContext);
 
   useEffect(() => {
     if (message.length) {
@@ -24,7 +26,7 @@ const ChatInterface = () => {
           apiKey: apiKey,
         });
         const openai = new OpenAIApi(configuration);
-        if (message.length == 1) {
+        if (message.length === 1) {
           const response = await openai.createChatCompletion({
             model: "gpt-3.5-turbo",
             messages: [
@@ -34,7 +36,7 @@ const ChatInterface = () => {
               },
             ],
           });
-
+          chatCtx.newChat();
           setTitle(response.data.choices[0].message.content);
         }
         const response = await openai.createChatCompletion({

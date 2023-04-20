@@ -4,9 +4,11 @@ import NewChat from "../newChat/NewChat";
 import "./chat-history.css";
 import { get, ref } from "firebase/database";
 import { db } from "../../../firebase";
+import { ChatContext } from "../../../store/chat-context";
 
 const ChatHistory = () => {
   const authCtx = useContext(AuthContext);
+  const chatCtx = useContext(ChatContext);
   const [title, setTitle] = useState({});
 
   useEffect(() => {
@@ -19,9 +21,11 @@ const ChatHistory = () => {
         }
       }
     };
-    getUserData();
-  }, [authCtx.uid]);
 
+    getUserData();
+    chatCtx.oldChat();
+  }, [authCtx.uid, chatCtx.isNewChat]);
+  console.log(chatCtx.isNewChat);
   return (
     <div className="chat-history px-3">
       <NewChat></NewChat>
