@@ -1,9 +1,20 @@
+import React, { useContext } from "react";
+import { ChatContext } from "../../../store/chat-context";
 import "./new-chat.css";
 
 const NewChat = () => {
+  const chatCtx = useContext(ChatContext);
+  const newChatHandler = () => {
+    chatCtx.start();
+    console.log(chatCtx.startNewChat);
+  };
+
   return (
     <div className="new-chat-padding">
-      <button className="new-chat btn text-start rounded-lg text-decoration-none w-100 ">
+      <button
+        onClick={newChatHandler}
+        className="new-chat btn text-start rounded-lg text-decoration-none w-100 "
+      >
         <i className="fa-solid fa-plus me-2"></i>
         <span>New chat</span>
       </button>

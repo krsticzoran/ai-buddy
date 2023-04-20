@@ -37,6 +37,7 @@ const ChatInterface = () => {
             ],
           });
           chatCtx.newChat();
+          chatCtx.end();
           setTitle(response.data.choices[0].message.content);
         }
         const response = await openai.createChatCompletion({
@@ -71,13 +72,22 @@ const ChatInterface = () => {
       if (title) {
         const snapshot = await set(
           ref(db, `users/${authCtx.uid}/history/${title}`),
-          { chat }
+          { ...chat }
         );
         console.log(`Created new folder: ${title}`);
       }
     };
     setTitleData();
   }, [title, chat]);
+
+  useEffect(() => {
+    if (chatCtx.startNewChat === true) {
+      setMessage([]);
+      setAnswer("");
+      setTitle("");
+      setChat([]);
+    }
+  }, [chatCtx.startNewChat]);
 
   return (
     <>
