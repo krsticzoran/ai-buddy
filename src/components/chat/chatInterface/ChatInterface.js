@@ -36,8 +36,9 @@ const ChatInterface = () => {
               },
             ],
           });
-          chatCtx.newChat();
+          chatCtx.addTitle();
           chatCtx.end();
+
           setTitle(response.data.choices[0].message.content);
         }
         const response = await openai.createChatCompletion({

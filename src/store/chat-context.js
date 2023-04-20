@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 
 const ChatContext = React.createContext({
-  isNewChat: false,
+  isNewTitle: false,
   startNewChat: false,
   newChat: () => {},
   oldChat: () => {},
 });
 
 const ChatContextProvider = (props) => {
-  const [isNewChat, setIsNewChat] = useState(false);
+  const [isNewTitle, setIsNetTitle] = useState(false);
   const [startNewChat, setStartNewChat] = useState(false);
 
-  const newChatHandler = () => {
-    setIsNewChat(true);
-    console.log(isNewChat);
+  const addTitleHandler = () => {
+    setIsNetTitle(true);
   };
 
-  const oldChatHandler = () => {
-    setIsNewChat(false);
+  const cancelTitleHandler = () => {
+    setIsNetTitle(false);
   };
 
   const startNewChatHandler = () => {
@@ -29,10 +28,10 @@ const ChatContextProvider = (props) => {
   };
 
   const contextValue = {
-    isNewChat: isNewChat,
+    isNewTitle: isNewTitle,
     startNewChat: startNewChat,
-    newChat: newChatHandler,
-    oldChat: oldChatHandler,
+    addTitle: addTitleHandler,
+    cancelTitle: cancelTitleHandler,
     start: startNewChatHandler,
     end: endNewChatHandler,
   };

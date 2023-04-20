@@ -13,6 +13,7 @@ const ChatHistory = () => {
 
   useEffect(() => {
     const getUserData = async () => {
+      setTitle({});
       if (authCtx.uid) {
         const snapshot = await get(ref(db, `users/${authCtx.uid}/history`));
         if (snapshot.exists()) {
@@ -23,9 +24,10 @@ const ChatHistory = () => {
     };
 
     getUserData();
-    chatCtx.oldChat();
-  }, [authCtx.uid, chatCtx.isNewChat]);
-  console.log(chatCtx.isNewChat);
+    console.log(1222222);
+    chatCtx.cancelTitle();
+  }, [authCtx.uid, chatCtx.isNewTitle]);
+
   return (
     <div className="chat-history px-3">
       <NewChat></NewChat>
