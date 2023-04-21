@@ -11,11 +11,15 @@ const ChatHistory = () => {
   const chatCtx = useContext(ChatContext);
   const [title, setTitle] = useState({});
 
+  const clickHandler = (key) => {
+    console.log(key);
+  };
+
   useEffect(() => {
     const getUserData = async () => {
-      setTitle({});
       if (authCtx.uid) {
         const snapshot = await get(ref(db, `users/${authCtx.uid}/history`));
+        setTitle({});
         if (snapshot.exists()) {
           setTitle(snapshot.val());
           console.log(snapshot.val());
@@ -33,6 +37,7 @@ const ChatHistory = () => {
       <NewChat></NewChat>
       {Object.keys(title).map((key) => (
         <button
+          onClick={() => clickHandler(key)}
           key={key}
           className="button-history btn text-start rounded-lg text-decoration-none w-100"
         >
