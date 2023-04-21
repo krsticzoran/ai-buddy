@@ -10,10 +10,26 @@ const ChatHistory = () => {
   const authCtx = useContext(AuthContext);
   const chatCtx = useContext(ChatContext);
   const [title, setTitle] = useState({});
+  const [key, setKey] = useState("");
 
   const clickHandler = (key) => {
-    console.log(key);
+    setKey(key);
   };
+
+  useEffect(() => {
+    const getUserChat = async () => {
+      const snapshot = await get(
+        ref(db, `users/${authCtx.uid}/history/${key}`)
+      );
+
+      if (snapshot.exists()) {
+        chatCtx.titleHandler(key);
+        chatCtx.chatHandler(snapshot.val());
+      }
+    };
+
+    getUserChat();
+  }, [key]);
 
   useEffect(() => {
     const getUserData = async () => {

@@ -26,7 +26,7 @@ const ChatInterface = () => {
           apiKey: apiKey,
         });
         const openai = new OpenAIApi(configuration);
-        if (message.length === 1) {
+        if (message.length === 1 && !title) {
           const response = await openai.createChatCompletion({
             model: "gpt-3.5-turbo",
             messages: [
@@ -52,6 +52,8 @@ const ChatInterface = () => {
         });
 
         setLoading(false);
+
+        //use  in sound
         setAnswer(response.data.choices[0].message.content);
 
         handleAnswer(response.data.choices[0].message.content);
@@ -89,6 +91,15 @@ const ChatInterface = () => {
       setChat([]);
     }
   }, [chatCtx.startNewChat]);
+
+  useEffect(() => {
+    if (chatCtx.chat && chatCtx.title) {
+      setMessage([]);
+      setAnswer("");
+      setTitle(chatCtx.title);
+      setChat(chatCtx.chat);
+    }
+  }, [chatCtx.chat, chatCtx.title]);
 
   return (
     <>
