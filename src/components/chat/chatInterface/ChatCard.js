@@ -20,7 +20,7 @@ const ChatCard = (props) => {
                 <div
                   key={index}
                   className={
-                    index % 2 == 0 ? "chat-card-color" : "chat-card-color-dark"
+                    index % 2 === 0 ? "chat-card-color" : "chat-card-color-dark"
                   }
                 >
                   <Card.Body className="chat-card-padding text-dark ">

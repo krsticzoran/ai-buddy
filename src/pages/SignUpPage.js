@@ -6,6 +6,7 @@ import { app, db, auth } from "../firebase.js";
 import { getDatabase, ref, set } from "firebase/database";
 import { AuthContext } from "../store/auth-contex";
 import { Navigate } from "react-router-dom";
+import "./page.css";
 
 const SignUpForm = () => {
   const authCtx = useContext(AuthContext);
@@ -77,12 +78,15 @@ const SignUpForm = () => {
           </div>
         )}
         <div className="d-grid gap-2">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn button-login-color">
             Sign up
           </button>
         </div>
         <div className="text-center mt-3">
-          <span>Already have an account?</span> <Link to="/login">Login</Link>
+          <span>Already have an account?</span>{" "}
+          <Link className="link-login-color" to="/login">
+            Login now!
+          </Link>
         </div>
       </form>
     </FormContainer>

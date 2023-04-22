@@ -4,6 +4,7 @@ import FormContainer from "../components/form/FormContainer";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app, db, auth } from "../firebase.js";
 import { AuthContext } from "../store/auth-contex";
+import "./page.css";
 
 const LoginPage = () => {
   const authCtx = useContext(AuthContext);
@@ -55,13 +56,15 @@ const LoginPage = () => {
         )}
 
         <div className="d-grid gap-2">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn  button-login-color">
             Login
           </button>
         </div>
         <div className="text-center mt-3">
           <span>Don't have an account yet?</span>{" "}
-          <Link to="/signup">Sign up now!</Link>
+          <Link className="link-login-color" to="/signup">
+            Sign up now!
+          </Link>
         </div>
       </form>
     </FormContainer>
