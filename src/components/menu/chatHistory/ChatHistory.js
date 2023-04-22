@@ -11,6 +11,7 @@ const ChatHistory = () => {
   const chatCtx = useContext(ChatContext);
   const [title, setTitle] = useState({});
   const [key, setKey] = useState("");
+  const [activeTitle, setActiveTitle] = useState("");
 
   const clickHandler = (key) => {
     setKey(key);
@@ -44,9 +45,17 @@ const ChatHistory = () => {
     };
 
     getUserData();
-    console.log(1222222);
+
     chatCtx.cancelTitle();
   }, [authCtx.uid, chatCtx.isNewTitle]);
+
+  useEffect(() => {
+    if (chatCtx.title) {
+      setActiveTitle(chatCtx.title);
+
+      console.log(chatCtx.title);
+    }
+  }, [chatCtx.title]);
 
   return (
     <div className="chat-history px-3">
@@ -55,7 +64,9 @@ const ChatHistory = () => {
         <button
           onClick={() => clickHandler(key)}
           key={key}
-          className="button-history btn text-start rounded-lg text-decoration-none w-100"
+          className={`button-history btn text-start rounded-lg text-decoration-none w-100 ${
+            key === activeTitle ? "button-active" : ""
+          } `}
         >
           <i className="fa-regular fa-message me-2"></i>
           <span className="me-2">{key}</span>

@@ -38,6 +38,7 @@ const ChatInterface = () => {
           });
           chatCtx.addTitle();
           chatCtx.end();
+          chatCtx.titleHandler(response.data.choices[0].message.content);
 
           setTitle(response.data.choices[0].message.content);
         }
@@ -78,6 +79,7 @@ const ChatInterface = () => {
           { ...chat }
         );
         console.log(`Created new folder: ${title}`);
+        chatCtx.end();
       }
     };
     setTitleData();
@@ -99,7 +101,7 @@ const ChatInterface = () => {
       setTitle(chatCtx.title);
       setChat(chatCtx.chat);
     }
-  }, [chatCtx.chat, chatCtx.title]);
+  }, [chatCtx.chat]);
 
   return (
     <>

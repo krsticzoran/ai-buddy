@@ -5,8 +5,8 @@ import "./new-chat.css";
 const NewChat = () => {
   const chatCtx = useContext(ChatContext);
   const newChatHandler = () => {
+    chatCtx.titleHandler("new chat");
     chatCtx.start();
-    console.log(chatCtx.startNewChat);
   };
 
   return (
