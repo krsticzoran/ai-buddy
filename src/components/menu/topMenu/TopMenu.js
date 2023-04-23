@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./title.css";
+import MenuButton from "./MenuButton";
+import "./top-menu.css";
 import { AuthContext } from "../../../store/auth-contex";
 import { get, ref } from "firebase/database";
 import { db } from "../../../firebase";
 
-const Title = () => {
+const TopMenu = () => {
   const authCtx = useContext(AuthContext);
   const [username, setUsername] = useState("");
 
@@ -21,12 +22,15 @@ const Title = () => {
   }, [authCtx.uid]);
 
   return (
-    <div className="px-3">
-      <button className="title text-decoration-none w-100">
-        {`${username.charAt(0).toUpperCase()}${username.slice(1).trim()}`}
-      </button>
+    <div className="px-3 ">
+      <div className="w-100 menu-container">
+        <button className="title text-decoration-none ">
+          {`${username.charAt(0).toUpperCase()}${username.slice(1).trim()}`}
+        </button>
+        <MenuButton></MenuButton>
+      </div>
     </div>
   );
 };
 
-export default Title;
+export default TopMenu;

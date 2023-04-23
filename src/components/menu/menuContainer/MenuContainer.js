@@ -1,5 +1,5 @@
 import Account from "../account/accountContainer/Account";
-import Title from "../title/Title";
+import TopMenu from "../topMenu/TopMenu";
 
 import ChatHistory from "../chatHistory/ChatHistory";
 import "./menu-container.css";
@@ -7,7 +7,7 @@ import "./menu-container.css";
 const MenuContainer = () => {
   return (
     <div className="container-style">
-      <Title></Title>
+      <TopMenu></TopMenu>
 
       <ChatHistory></ChatHistory>
 
