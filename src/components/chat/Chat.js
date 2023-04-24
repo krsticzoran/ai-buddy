@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Configuration, OpenAIApi } from "openai";
-import ChatCard from "./ChatCard";
-import UserInput from "../form/userInput/UserInput";
-import { AuthContext } from "../../../store/auth-contex";
+import ChatCard from "./chatCard/ChatCard";
+import UserInput from "./userInput/UserInput";
+import { AuthContext } from "../../store/auth-contex";
 import { set, ref } from "firebase/database";
-import { db } from "../../../firebase";
-import { ChatContext } from "../../../store/chat-context";
+import { db } from "../../firebase";
+import { ChatContext } from "../../store/chat-context";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../store/auth-contex";
-import NewChat from "../newChat/NewChat";
-import "./chat-history.css";
+import NewChat from "./newChat/NewChat";
+import "./middle-menu.css";
 import { get, ref } from "firebase/database";
 import { db } from "../../../firebase";
 import { ChatContext } from "../../../store/chat-context";

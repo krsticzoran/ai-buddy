@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import ChatInterface from "../components/chat/chatInterface/ChatInterface";
-import MenuContainer from "../components/menu/menuContainer/MenuContainer";
-import { AuthContext } from "../store/auth-contex";
 import { Navigate } from "react-router-dom";
+
+import { Container, Row, Col } from "react-bootstrap";
+import { AuthContext } from "../store/auth-contex";
+
+import Chat from "../components/chat/Chat";
+import Menu from "../components/menu/Menu";
 
 const AppPage = (props) => {
   const authCtx = useContext(AuthContext);
@@ -16,10 +18,10 @@ const AppPage = (props) => {
     <Container fluid className="g-0 ">
       <Row className="g-0 ">
         <Col md={2}>
-          <MenuContainer></MenuContainer>
+          <Menu />
         </Col>
         <Col md={10}>
-          <ChatInterface></ChatInterface>
+          <Chat />
         </Col>
       </Row>
     </Container>

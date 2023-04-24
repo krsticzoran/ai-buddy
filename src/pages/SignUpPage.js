@@ -1,12 +1,14 @@
 import React, { useContext, useState, useRef } from "react";
-import { Link } from "react-router-dom";
-import FormContainer from "../components/form/FormContainer";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { app, db, auth } from "../firebase.js";
-import { getDatabase, ref, set } from "firebase/database";
-import { AuthContext } from "../store/auth-contex";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "./page.css";
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { db, auth } from "../firebase.js";
+import { ref, set } from "firebase/database";
+
+import { AuthContext } from "../store/auth-contex";
+
+import LoginFormContainer from "../components/loginFormContainer/LoginFormContainer.js";
 
 const SignUpForm = () => {
   const authCtx = useContext(AuthContext);
@@ -45,7 +47,7 @@ const SignUpForm = () => {
   }
 
   return (
-    <FormContainer>
+    <LoginFormContainer>
       <h5 className="card-title mb-4">Sign Up</h5>
       <form onSubmit={handleSignUp}>
         <div className="mb-3">
@@ -89,7 +91,7 @@ const SignUpForm = () => {
           </Link>
         </div>
       </form>
-    </FormContainer>
+    </LoginFormContainer>
   );
 };
 

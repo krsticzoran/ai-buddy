@@ -1,22 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
-import AppPage from "./pages/AppPage";
-import LoginPage from "./pages/LoginPage";
-import SignUpPage from "./pages/SignUpPage";
+
 import { AuthContextProvider } from "./store/auth-contex";
 import { ChatContextProvider } from "./store/chat-context";
 
+import AppPage from "./pages/AppPage";
+import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
+
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-
-  const login = () => {
-    setIsLoggedIn(true);
-  };
-
-  const logout = () => {
-    setIsLoggedIn(false);
-  };
-
   return (
     <AuthContextProvider>
       <ChatContextProvider>

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ChatContext } from "../../../store/chat-context";
+import { ChatContext } from "../../../../store/chat-context";
 import "./new-chat.css";
 
 const NewChat = () => {

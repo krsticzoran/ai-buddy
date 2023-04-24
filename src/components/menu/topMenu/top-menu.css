@@ -20,18 +20,3 @@
 .title:hover {
   color: #e4e4e4 !important;
 }
-
-.menu-button {
-  color: #e4e4e4;
-  background-color: transparent;
-  border: 0;
-}
-
-i {
-  font-size: 24px;
-}
-@media (min-width: 768px) {
-  .menu-button {
-    display: none !important;
-  }
-}

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import FormContainer from "../formContainer/FormContainer";
-import ButtonContainer from "../button/ButtonContainer";
-import { FormControl } from "react-bootstrap";
 import "./user-input.css";
+
+import { FormControl } from "react-bootstrap";
+
+import UserInputContainer from "./UserInputContainer/UserInputContainer";
+import ButtonContainer from "./buttons/ButtonContainer";
 
 const UserInput = (props) => {
   const [input, setInput] = useState("");
@@ -46,7 +48,7 @@ const UserInput = (props) => {
   };
 
   return (
-    <FormContainer>
+    <UserInputContainer>
       <FormControl
         placeholder={isRecording ? "" : "Type your message here"}
         type="text"
@@ -72,7 +74,7 @@ const UserInput = (props) => {
         handleVoiceInput={handleVoiceInput}
         answer={props.answer}
       ></ButtonContainer>
-    </FormContainer>
+    </UserInputContainer>
   );
 };
 

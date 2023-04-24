@@ -1,4 +1,4 @@
-import "./top-menu.css";
+import "./menu-button.css";
 
 const MenuButton = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 
-const FormContainer = (props) => {
+const LoginFormContainer = (props) => {
   return (
     <div className="container">
       <div className="row justify-content-center mt-5">
@@ -14,4 +14,4 @@ const FormContainer = (props) => {
   );
 };
 
-export default FormContainer;
+export default LoginFormContainer;

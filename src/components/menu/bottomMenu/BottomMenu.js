@@ -1,6 +1,6 @@
-import Logout from "../logout/Logout.js";
-import ClearCoversation from "../clear/ClearConversation.js";
-import "./account.css";
+import Logout from "./logout/Logout.js";
+import ClearCoversation from "./clear/ClearConversation.js";
+import "./bottom-menu.css";
 
 const Account = () => {
   return (

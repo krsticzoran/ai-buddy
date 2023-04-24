@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import MenuButton from "./MenuButton";
 import "./top-menu.css";
+
 import { AuthContext } from "../../../store/auth-contex";
 import { get, ref } from "firebase/database";
 import { db } from "../../../firebase";
+
+import MenuButton from "./menuButton/MenuButton";
 
 const TopMenu = () => {
   const authCtx = useContext(AuthContext);
