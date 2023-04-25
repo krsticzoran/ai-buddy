@@ -3,6 +3,12 @@
   height: 80vh;
 }
 
+@media (max-width: 768px) {
+  .my-card {
+    height: 65vh;
+  }
+}
+
 .card-background {
   background-color: #000313 !important;
 }

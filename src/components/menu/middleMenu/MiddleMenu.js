@@ -15,6 +15,9 @@ const ChatHistory = () => {
 
   const clickHandler = (key) => {
     setKey(key);
+    if (chatCtx.isMenuOpen) {
+      chatCtx.toggleMenu(false);
+    }
   };
 
   useEffect(() => {
@@ -58,7 +61,11 @@ const ChatHistory = () => {
   }, [chatCtx.title]);
 
   return (
-    <div className="chat-history px-3">
+    <div
+      className={`chat-history px-3 ${
+        chatCtx.isMenuOpen ? "" : "chat-display"
+      } `}
+    >
       <NewChat></NewChat>
       {Object.keys(title).map((key) => (
         <button

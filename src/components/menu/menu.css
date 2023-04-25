@@ -2,3 +2,9 @@
   height: 100vh;
   border-right: 1px solid #202238;
 }
+
+@media (max-width: 768px) {
+  .container-style {
+    height: 15vh;
+  }
+}

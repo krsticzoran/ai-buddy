@@ -3,17 +3,20 @@ import React, { useState } from "react";
 const ChatContext = React.createContext({
   isNewTitle: false,
   startNewChat: false,
+  isMenuOpen: false,
   chat: [],
   title: "",
   newChat: () => {},
   oldChat: () => {},
   chatHandler: () => {},
   titleHandler: () => {},
+  toggleMenu: () => {},
 });
 
 const ChatContextProvider = (props) => {
   const [isNewTitle, setIsNetTitle] = useState(false);
   const [startNewChat, setStartNewChat] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [chat, setChat] = useState([]);
   const [title, setTitle] = useState("");
 
@@ -41,9 +44,14 @@ const ChatContextProvider = (props) => {
     setTitle(value);
   };
 
+  const toggleMenu = (value) => {
+    setIsMenuOpen(value);
+  };
+
   const contextValue = {
     isNewTitle: isNewTitle,
     startNewChat: startNewChat,
+    isMenuOpen: isMenuOpen,
     chat: chat,
     title: title,
     addTitle: addTitleHandler,
@@ -52,6 +60,7 @@ const ChatContextProvider = (props) => {
     end: endNewChatHandler,
     chatHandler: chatHandler,
     titleHandler: titleHandler,
+    toggleMenu: toggleMenu,
   };
 
   return (

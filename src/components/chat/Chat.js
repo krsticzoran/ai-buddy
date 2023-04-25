@@ -6,6 +6,7 @@ import { AuthContext } from "../../store/auth-contex";
 import { set, ref } from "firebase/database";
 import { db } from "../../firebase";
 import { ChatContext } from "../../store/chat-context";
+import "./chat.css";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -104,14 +105,14 @@ const ChatInterface = () => {
   }, [chatCtx.chat]);
 
   return (
-    <>
+    <div className={`${chatCtx.isMenuOpen ? "chat-display" : ""}`}>
       <ChatCard messages={chat} />
       <UserInput
         isLoading={loading}
         onData={handleData}
         answer={answer}
       ></UserInput>
-    </>
+    </div>
   );
 };
 

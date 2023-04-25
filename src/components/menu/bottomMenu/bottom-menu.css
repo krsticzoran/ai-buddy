@@ -5,3 +5,9 @@
   border-top: 1px solid #202238 !important;
   padding: 0.75rem 0 !important;
 }
+
+@media (max-width: 768px) {
+  .account-display {
+    display: none !important;
+  }
+}
