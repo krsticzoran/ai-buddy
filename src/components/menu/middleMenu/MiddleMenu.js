@@ -63,7 +63,7 @@ const ChatHistory = () => {
   return (
     <div
       className={`chat-history px-3 ${
-        chatCtx.isMenuOpen ? "" : "chat-display"
+        chatCtx.isMenuOpen ? "" : "chat-history-display"
       } `}
     >
       <NewChat></NewChat>
@@ -71,12 +71,12 @@ const ChatHistory = () => {
         <button
           onClick={() => clickHandler(key)}
           key={key}
-          className={`button-history btn text-start rounded-lg text-decoration-none w-100 ${
+          className={`btn-txt-decoration button-history btn text-start rounded-lg text-decoration-none w-100 ${
             key === activeTitle ? "button-active" : ""
           } `}
         >
           <i className="fa-regular fa-message me-2"></i>
-          <span className="me-2">{key}</span>
+          <span className="me-2 ">{key}</span>
         </button>
       ))}
     </div>

@@ -15,7 +15,7 @@ const AppPage = (props) => {
   }
 
   return (
-    <Container fluid className="g-0 ">
+    <Container fluid className="g-0">
       <Row className="g-0 ">
         <Col md={2}>
           <Menu />

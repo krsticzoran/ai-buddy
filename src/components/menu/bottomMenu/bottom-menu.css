@@ -8,6 +8,6 @@
 
 @media (max-width: 768px) {
   .account-display {
-    display: none !important;
+    display: none;
   }
 }

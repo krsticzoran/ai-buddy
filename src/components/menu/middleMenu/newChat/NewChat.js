@@ -7,6 +7,9 @@ const NewChat = () => {
   const newChatHandler = () => {
     chatCtx.titleHandler("new chat");
     chatCtx.start();
+    if (chatCtx.isMenuOpen) {
+      chatCtx.toggleMenu(false);
+    }
   };
 
   return (

@@ -2,6 +2,7 @@
   height: 70vh;
   overflow-y: auto;
   position: relative;
+  opacity: 1 !important;
   z-index: 9999 !important;
 }
 .button-history {
@@ -17,7 +18,20 @@
 }
 
 @media (max-width: 768px) {
-  .chat-display {
-    display: none !important;
+  .chat-history-display {
+    display: none;
   }
+}
+
+.btn-txt-decoration {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-txt-decoration:hover {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
 }
