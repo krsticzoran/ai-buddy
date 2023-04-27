@@ -7,8 +7,8 @@ To access the application, you can either register or log in using the following
 Email: user@email.com<br />
 Password: z12345<br /><br />
 
-Have you ever wanted to improve your English skills but didn't have anyone to talk to? AI-buddy is a conversation partner who is proficient in English and always ready to chat.
+AI-buddy is an advanced version of ChatGPT that enables users to talk with AI, which can enhance the user experience as well as serve for practicing English language speaking. The app is built in React and Bootstrap.
 
-The application currently includes all its functionalities, but we are working on improving its responsiveness, cleaning up the code, and adding some minor details to enhance the user experience.
+While the application is fully functional, I'm still working on improving its code quality and enhancing the user experience with new features, such as improvements to the speaking option and visual enhancements.
 
 <br /><br />
