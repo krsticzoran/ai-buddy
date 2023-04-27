@@ -2,6 +2,10 @@
   font-size: 2.5rem !important;
   color: #01163fcc !important;
 }
+.loading-dots:hover {
+  background-color: transparent;
+}
+
 .button-container {
   z-index: 999;
 }
