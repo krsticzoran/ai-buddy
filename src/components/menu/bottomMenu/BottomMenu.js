@@ -9,11 +9,11 @@ const Account = () => {
   const ctxCHat = useContext(ChatContext);
   return (
     <div
-      className={`"account px-3" ${
-        ctxCHat.isMenuOpen ? "" : "account-display"
+      className={`account px-3 ${
+        ctxCHat.isMenuOpen ? "account-display-in" : "account-display"
       }`}
     >
-      <div className="account-border">
+      <div className="account-border ">
         <ClearCoversation></ClearCoversation>
         <Logout></Logout>
       </div>

@@ -62,8 +62,8 @@ const ChatHistory = () => {
 
   return (
     <div
-      className={`chat-history px-3 ${
-        chatCtx.isMenuOpen ? "" : "chat-history-display"
+      className={`chat-history px-3  ${
+        chatCtx.isMenuOpen ? "chat-history-display-in" : "chat-history-display"
       } `}
     >
       <NewChat></NewChat>

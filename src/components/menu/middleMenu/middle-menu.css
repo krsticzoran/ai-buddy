@@ -4,6 +4,7 @@
   position: relative;
   opacity: 1 !important;
   z-index: 9999 !important;
+  background-color: #000313 !important;
 }
 .button-history {
   color: #e4e4e4 !important;
@@ -19,7 +20,17 @@
 
 @media (max-width: 768px) {
   .chat-history-display {
-    display: none;
+    height: 69vh !important;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in;
+
+    border-right: 1px solid #202238 !important;
+  }
+  .chat-history-display-in {
+    height: 69vh !important;
+    transition: transform 0.5s ease-in;
+
+    border-right: 1px solid #202238 !important;
   }
 }
 
