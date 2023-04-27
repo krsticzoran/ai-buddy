@@ -6,3 +6,10 @@
 .link-login-color {
   color: #143066 !important;
 }
+.login-signup {
+  background-color: #fff !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh !important;
+}

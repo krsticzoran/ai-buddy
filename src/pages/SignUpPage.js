@@ -47,51 +47,53 @@ const SignUpForm = () => {
   }
 
   return (
-    <LoginFormContainer>
-      <h5 className="card-title mb-4">Sign Up</h5>
-      <form onSubmit={handleSignUp}>
-        <div className="mb-3">
-          <label htmlFor="username" className="form-label">
-            Username
-          </label>
-          <input
-            ref={userNameRef}
-            type="text"
-            className="form-control"
-            id="username"
-            maxLength={15}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email address
-          </label>
-          <input type="email" className="form-control" id="email" />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input type="password" className="form-control" id="password" />
-        </div>
-        {signUpError && (
-          <div className="alert alert-danger" role="alert">
-            {signUpError}
+    <div className="login-signup">
+      <LoginFormContainer>
+        <h5 className="card-title mb-4">Sign Up</h5>
+        <form onSubmit={handleSignUp}>
+          <div className="mb-3">
+            <label htmlFor="username" className="form-label">
+              Username
+            </label>
+            <input
+              ref={userNameRef}
+              type="text"
+              className="form-control"
+              id="username"
+              maxLength={15}
+            />
           </div>
-        )}
-        <div className="d-grid gap-2">
-          <button type="submit" className="btn button-login-color">
-            Sign up
-          </button>
-        </div>
-        <div className="text-center mt-3">
-          <span>Already have an account?</span>{" "}
-          <Link className="link-login-color" to="/login">
-            Login now!
-          </Link>
-        </div>
-      </form>
-    </LoginFormContainer>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">
+              Email address
+            </label>
+            <input type="email" className="form-control" id="email" />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input type="password" className="form-control" id="password" />
+          </div>
+          {signUpError && (
+            <div className="alert alert-danger" role="alert">
+              {signUpError}
+            </div>
+          )}
+          <div className="d-grid gap-2">
+            <button type="submit" className="btn button-login-color">
+              Sign up
+            </button>
+          </div>
+          <div className="text-center mt-3">
+            <span>Already have an account?</span>{" "}
+            <Link className="link-login-color" to="/login">
+              Login now!
+            </Link>
+          </div>
+        </form>
+      </LoginFormContainer>
+    </div>
   );
 };
 
