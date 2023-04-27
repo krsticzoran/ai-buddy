@@ -14,7 +14,7 @@ const RecordingDots = (props) => {
 
   useEffect(() => {
     if (dots.length > 65) {
-      props.handleOnMouseUp();
+      props.recordingStop();
     }
   }, [dots]);
 

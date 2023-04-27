@@ -15,19 +15,23 @@ const ButtonContainer = (props) => {
     },
   });
 
+  const clickHandler = () => {
+    if (!props.isRecording) {
+      props.recordingStart();
+    } else {
+      props.recordingStop();
+    }
+  };
+
   useEffect(() => {
-    let timeoutId = null;
     if (props.isRecording) {
       listen();
     }
     if (!props.isRecording && value !== "") {
-      timeoutId = setTimeout(() => {
-        props.handleVoiceInput(value);
-        stop();
-        setValue("");
-      }, 1000);
+      props.handleVoiceInput(value);
+      stop();
+      setValue("");
     }
-    return () => clearTimeout(timeoutId);
   }, [props.isRecording]);
 
   return (
@@ -36,14 +40,15 @@ const ButtonContainer = (props) => {
         <SendButton isLoading={props.isLoading} onClick={props.onClick} />
       )}
 
-      {props.isRecording && <RecordingDots handleOnMouseUp={props.onMouseUp} />}
+      {props.isRecording && (
+        <RecordingDots recordingStop={props.recordingStop} />
+      )}
 
       {props.input === "" && (
         <Microphone
-          onMouseDown={props.onMouseDown}
-          onMouseUp={props.onMouseUp}
-          onTouchStart={props.onMouseDown}
-          onTouchEnd={props.onMouseUp}
+          onClick={clickHandler}
+          recordingStart={props.recordingStart}
+          recordingStop={props.recordingStop}
           isRecording={props.isRecording}
           handleVoiceInput={props.handleVoiceInput}
         />

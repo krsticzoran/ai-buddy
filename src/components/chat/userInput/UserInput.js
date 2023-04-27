@@ -11,10 +11,10 @@ const UserInput = (props) => {
   const [voice, setVoice] = useState("");
   const [isRecording, setIsRecording] = useState(false);
 
-  const handleOnMouseDown = () => {
+  const recordingStart = () => {
     setIsRecording(true);
   };
-  const handleOnMouseUp = () => {
+  const recordingStop = () => {
     setIsRecording(false);
   };
 
@@ -67,10 +67,8 @@ const UserInput = (props) => {
         onClick={handleClick}
         input={input}
         isRecording={isRecording}
-        onMouseDown={handleOnMouseDown}
-        onMouseUp={handleOnMouseUp}
-        onTouchStart={handleOnMouseDown}
-        onTouchEnd={handleOnMouseUp}
+        recordingStart={recordingStart}
+        recordingStop={recordingStop}
         handleVoiceInput={handleVoiceInput}
         answer={props.answer}
       ></ButtonContainer>
