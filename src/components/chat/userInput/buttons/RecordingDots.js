@@ -13,6 +13,10 @@ const RecordingDots = (props) => {
   }, []);
 
   useEffect(() => {
+    if (window.innerWidth < 1400 && dots.length > 23) {
+      props.recordingStop();
+    }
+
     if (dots.length > 65) {
       props.recordingStop();
     }
