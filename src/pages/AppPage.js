@@ -17,15 +17,14 @@ const AppPage = (props) => {
   return (
     <Container fluid className="g-0">
       <Row className="g-0 ">
-        <Col md={2}>
+        <Col sm={12} md={4} lg={3} xxl={2}>
           <Menu />
         </Col>
-        <Col md={10}>
+        <Col sm={12} md={8} lg={9} xxl={10}>
           <Chat />
         </Col>
       </Row>
     </Container>
   );
 };
-
 export default AppPage;
