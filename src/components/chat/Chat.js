@@ -47,7 +47,9 @@ const ChatInterface = () => {
           messages: [
             {
               role: "user",
-              content: `${message.slice(-1)}`,
+              content: `provide an answer based on the chat: ${chat} particularly based on the last question asked by the user: ${message.slice(
+                -1
+              )}`,
             },
           ],
         });
