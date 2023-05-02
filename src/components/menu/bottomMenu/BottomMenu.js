@@ -5,7 +5,7 @@ import ClearCoversation from "./clear/ClearConversation.js";
 import { ChatContext } from "../../../store/chat-context.js";
 import "./bottom-menu.css";
 
-const Account = () => {
+const BottomMenu = () => {
   const ctxCHat = useContext(ChatContext);
   return (
     <div
@@ -21,4 +21,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default BottomMenu;

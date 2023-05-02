@@ -15,9 +15,7 @@ const ChatHistory = () => {
 
   const clickHandler = (key) => {
     setKey(key);
-    if (chatCtx.isMenuOpen) {
-      chatCtx.toggleMenu(false);
-    }
+    chatCtx.isMenuOpen && chatCtx.toggleMenu(false);
   };
 
   useEffect(() => {
@@ -40,10 +38,7 @@ const ChatHistory = () => {
       if (authCtx.uid) {
         const snapshot = await get(ref(db, `users/${authCtx.uid}/history`));
         setTitle({});
-        if (snapshot.exists()) {
-          setTitle(snapshot.val());
-          console.log(snapshot.val());
-        }
+        snapshot.exists() && setTitle(snapshot.val());
       }
     };
 
@@ -53,11 +48,7 @@ const ChatHistory = () => {
   }, [authCtx.uid, chatCtx.isNewTitle]);
 
   useEffect(() => {
-    if (chatCtx.title) {
-      setActiveTitle(chatCtx.title);
-
-      console.log(chatCtx.title);
-    }
+    setActiveTitle(chatCtx.title);
   }, [chatCtx.title]);
 
   return (

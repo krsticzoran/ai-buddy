@@ -14,14 +14,12 @@ const Sound = (props) => {
       utterance.volume = 1;
       window.speechSynthesis.speak(utterance);
     }
-  }, [props.answer]);
+  }, [props.answer, soundOn]);
 
   const toggleSound = () => {
-    soundOn ? setSoundOn(false) : setSoundOn(true);
-    console.log(soundOn);
-    if (soundOn) {
-      window.speechSynthesis.cancel();
-    }
+    setSoundOn((prevState) => !prevState);
+
+    soundOn && window.speechSynthesis.cancel();
   };
 
   return (

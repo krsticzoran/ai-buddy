@@ -4,12 +4,11 @@ import "./new-chat.css";
 
 const NewChat = () => {
   const chatCtx = useContext(ChatContext);
+
   const newChatHandler = () => {
     chatCtx.titleHandler("new chat");
     chatCtx.start();
-    if (chatCtx.isMenuOpen) {
-      chatCtx.toggleMenu(false);
-    }
+    chatCtx.isMenuOpen && chatCtx.toggleMenu(false);
   };
 
   return (
