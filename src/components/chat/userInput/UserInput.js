@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import "./user-input.css";
 
 import { FormControl } from "react-bootstrap";
@@ -76,4 +76,4 @@ const UserInput = (props) => {
   );
 };
 
-export default UserInput;
+export const MemoizedUserInput = React.memo(UserInput);

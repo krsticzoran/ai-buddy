@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import "./button.css";
 
 const Sound = (props) => {
   const [soundOn, setSoundOn] = useState(true);
-
+  console.log("sound");
   useEffect(() => {
     if (soundOn && props.answer.length) {
       const utterance = new SpeechSynthesisUtterance(props.answer);

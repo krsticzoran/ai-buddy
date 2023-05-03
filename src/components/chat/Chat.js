@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { Configuration, OpenAIApi } from "openai";
 import ChatCard from "./chatCard/ChatCard";
-import UserInput from "./userInput/UserInput";
+import { MemoizedUserInput } from "./userInput/UserInput";
 import { AuthContext } from "../../store/auth-contex";
 import { set, ref } from "firebase/database";
 import { db } from "../../firebase";
@@ -68,18 +68,17 @@ const ChatInterface = () => {
   const handleAnswer = (answer) => {
     setChat((prevMessages) => [...prevMessages, answer]);
   };
-  const handleData = (input) => {
+  const handleData = useCallback((input) => {
     setChat((prevMessage) => [...prevMessage, input]);
     setMessage((prevMessage) => [...prevMessage, input]);
-  };
+  }, []);
 
   useEffect(() => {
     const setTitleData = async () => {
       if (title) {
-        const snapshot = await set(
-          ref(db, `users/${authCtx.uid}/history/${title}`),
-          { ...chat }
-        );
+        await set(ref(db, `users/${authCtx.uid}/history/${title}`), {
+          ...chat,
+        });
         console.log(`Created new folder: ${title}`);
         chatCtx.end();
       }
@@ -108,11 +107,11 @@ const ChatInterface = () => {
   return (
     <>
       <ChatCard messages={chat} />
-      <UserInput
+      <MemoizedUserInput
         isLoading={loading}
         onData={handleData}
         answer={answer}
-      ></UserInput>
+      ></MemoizedUserInput>
     </>
   );
 };
