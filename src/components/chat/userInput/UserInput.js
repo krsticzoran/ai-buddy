@@ -29,7 +29,6 @@ const UserInput = (props) => {
 
   useEffect(() => {
     if (voice.length) {
-      console.log(voice);
       props.onData(voice);
       setVoice("");
     }

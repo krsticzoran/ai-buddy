@@ -3,7 +3,6 @@ import "./button.css";
 
 const Sound = (props) => {
   const [soundOn, setSoundOn] = useState(true);
-  console.log("sound");
   useEffect(() => {
     if (soundOn && props.answer.length) {
       const utterance = new SpeechSynthesisUtterance(props.answer);
@@ -37,4 +36,4 @@ const Sound = (props) => {
   );
 };
 
-export default Sound;
+export const MemoizedSound = React.memo(Sound);

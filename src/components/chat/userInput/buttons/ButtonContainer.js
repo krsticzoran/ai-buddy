@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./button.css";
 import RecordingDots from "./RecordingDots";
 import { useSpeechRecognition } from "react-speech-kit";
 
 import SendButton from "./SendButton";
 import Microphone from "./Microphone";
-import Sound from "./Sound";
+import { MemoizedSound } from "./Sound";
 
 const ButtonContainer = (props) => {
   const [value, setValue] = useState("");
@@ -53,7 +53,7 @@ const ButtonContainer = (props) => {
           handleVoiceInput={props.handleVoiceInput}
         />
       )}
-      <Sound answer={props.answer}></Sound>
+      <MemoizedSound answer={props.answer} />
     </div>
   );
 };

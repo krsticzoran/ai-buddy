@@ -79,7 +79,7 @@ const ChatInterface = () => {
         await set(ref(db, `users/${authCtx.uid}/history/${title}`), {
           ...chat,
         });
-        console.log(`Created new folder: ${title}`);
+
         chatCtx.end();
       }
     };
