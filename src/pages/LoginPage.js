@@ -1,13 +1,13 @@
-import React, { useContext, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
-import "./page.css";
+import React, { useContext, useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
+import './page.css';
 
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase.js";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase.js';
 
-import { AuthContext } from "../store/auth-contex";
+import { AuthContext } from '../store/auth-contex';
 
-import LoginFormContainer from "../components/loginFormContainer/LoginFormContainer";
+import LoginFormContainer from '../components/loginFormContainer/LoginFormContainer';
 
 const LoginPage = () => {
   const authCtx = useContext(AuthContext);
@@ -55,7 +55,7 @@ const LoginPage = () => {
 
           {loginError && (
             <div className="alert alert-danger" role="alert">
-              {"Incorrect email or password. Please try again."}
+              {'Incorrect email or password. Please try again.'}
             </div>
           )}
 
@@ -65,7 +65,7 @@ const LoginPage = () => {
             </button>
           </div>
           <div className="text-center mt-3">
-            <span>Don't have an account yet?</span>{" "}
+            <span>Don&apos;t have an account yet? </span>
             <Link className="link-login-color" to="/signup">
               Sign up now!
             </Link>

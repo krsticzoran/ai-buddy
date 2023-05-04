@@ -1,0 +1,10 @@
+{
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "rules": {
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "react/prop-types": "off",
+    "react/no-unknown-property": "off"
+  },
+  "plugins": ["react"]
+}

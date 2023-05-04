@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const ChatContext = React.createContext({
   isNewTitle: false,
   startNewChat: false,
   isMenuOpen: false,
   chat: [],
-  title: "",
+  title: '',
   newChat: () => {},
   oldChat: () => {},
   chatHandler: () => {},
@@ -18,7 +18,7 @@ const ChatContextProvider = (props) => {
   const [startNewChat, setStartNewChat] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [chat, setChat] = useState([]);
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState('');
 
   const addTitleHandler = () => {
     setIsNetTitle(true);

@@ -1,14 +1,14 @@
-import React, { useContext, useState, useRef } from "react";
-import { Link, Navigate } from "react-router-dom";
-import "./page.css";
+import React, { useContext, useState, useRef } from 'react';
+import { Link, Navigate } from 'react-router-dom';
+import './page.css';
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { db, auth } from "../firebase.js";
-import { ref, set } from "firebase/database";
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { db, auth } from '../firebase.js';
+import { ref, set } from 'firebase/database';
 
-import { AuthContext } from "../store/auth-contex";
+import { AuthContext } from '../store/auth-contex';
 
-import LoginFormContainer from "../components/loginFormContainer/LoginFormContainer.js";
+import LoginFormContainer from '../components/loginFormContainer/LoginFormContainer.js';
 
 const SignUpForm = () => {
   const authCtx = useContext(AuthContext);
@@ -18,7 +18,7 @@ const SignUpForm = () => {
   const handleSignUp = async (event) => {
     event.preventDefault();
     if (!userNameRef.current.value.trim()) {
-      setSignUpError("Please enter a username");
+      setSignUpError('Please enter a username');
       return;
     }
 
@@ -39,7 +39,7 @@ const SignUpForm = () => {
       authCtx.login();
     } catch (error) {
       console.error(error);
-      setSignUpError("Incorrect email or password. Please try again.");
+      setSignUpError('Incorrect email or password. Please try again.');
     }
   };
   if (authCtx.isLoggedIn) {
@@ -86,7 +86,7 @@ const SignUpForm = () => {
             </button>
           </div>
           <div className="text-center mt-3">
-            <span>Already have an account?</span>{" "}
+            <span>Already have an account? </span>
             <Link className="link-login-color" to="/login">
               Login now!
             </Link>

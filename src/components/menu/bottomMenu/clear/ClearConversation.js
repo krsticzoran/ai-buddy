@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../../../store/auth-contex";
-import { ChatContext } from "../../../../store/chat-context";
-import { ref, set } from "firebase/database";
-import { db } from "../../../../firebase";
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../../store/auth-contex';
+import { ChatContext } from '../../../../store/chat-context';
+import { ref, set } from 'firebase/database';
+import { db } from '../../../../firebase';
 
-import "./clear-conversation.css";
+import './clear-conversation.css';
 
 const ClearCoversation = () => {
   const authCtx = useContext(AuthContext);
@@ -13,7 +13,7 @@ const ClearCoversation = () => {
   const clearChatHandler = async () => {
     if (authCtx.uid) {
       await set(ref(db, `users/${authCtx.uid}/history`), null);
-      console.log("Chat history cleared.");
+      console.log('Chat history cleared.');
       chatCtx.start();
       chatCtx.addTitle();
     }

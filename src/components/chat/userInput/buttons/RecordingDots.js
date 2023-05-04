@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 const RecordingDots = (props) => {
-  const [dots, setDots] = useState("");
+  const [dots, setDots] = useState('');
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setDots((prevDots) => {
-        return prevDots + ".";
+        return prevDots + '.';
       });
     }, 300);
     return () => clearInterval(intervalId);

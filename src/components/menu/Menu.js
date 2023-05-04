@@ -1,9 +1,9 @@
-import React from "react";
-import "./menu.css";
+import React from 'react';
+import './menu.css';
 
-import TopMenu from "./topMenu/TopMenu";
-import BottomMenu from "./bottomMenu/BottomMenu";
-import MiddleMenu from "./middleMenu/MiddleMenu";
+import TopMenu from './topMenu/TopMenu';
+import BottomMenu from './bottomMenu/BottomMenu';
+import MiddleMenu from './middleMenu/MiddleMenu';
 
 const Menu = () => {
   return (

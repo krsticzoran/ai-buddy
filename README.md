@@ -13,3 +13,5 @@ The app is built in React and Bootstrap.
 The project was primarily created to gain experience in React and practice using various React features such as useState, useEffect, useRef, useContext, useCallback, and React.memo.
 
 <br /><br />
+
+The app is built in React and Bootstrap.

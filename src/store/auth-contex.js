@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const AuthContext = React.createContext({
   isLoggedIn: false,
-  uid: "",
+  uid: '',
   login: () => {},
   logout: () => {},
   addId: () => {},
@@ -10,7 +10,7 @@ const AuthContext = React.createContext({
 
 const AuthContextProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [uid, setUid] = useState("");
+  const [uid, setUid] = useState('');
 
   const loginHandler = () => {
     setIsLoggedIn(true);
