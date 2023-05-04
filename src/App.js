@@ -18,6 +18,7 @@ const App = () => {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/" element={<Navigate to="/signup" />} />
+            <Route path="/*" element={<Navigate to="/" />} />
           </Routes>
         </BrowserRouter>
       </ChatContextProvider>
