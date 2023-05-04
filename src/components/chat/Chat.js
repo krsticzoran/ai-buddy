@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext, useCallback } from "react";
-import { Configuration, OpenAIApi } from "openai";
-import ChatCard from "./chatCard/ChatCard";
-import { MemoizedUserInput } from "./userInput/UserInput";
-import { AuthContext } from "../../store/auth-contex";
-import { set, ref } from "firebase/database";
-import { db } from "../../firebase";
-import { ChatContext } from "../../store/chat-context";
+import React, { useState, useEffect, useContext, useCallback } from 'react';
+import { Configuration, OpenAIApi } from 'openai';
+import ChatCard from './chatCard/ChatCard';
+import { MemoizedUserInput } from './userInput/UserInput';
+import { AuthContext } from '../../store/auth-contex';
+import { set, ref } from 'firebase/database';
+import { db } from '../../firebase';
+import { ChatContext } from '../../store/chat-context';
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -14,8 +14,8 @@ const ChatInterface = () => {
   const [message, setMessage] = useState([]);
   const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [answer, setAnswer] = useState("");
-  const [title, setTitle] = useState("");
+  const [answer, setAnswer] = useState('');
+  const [title, setTitle] = useState('');
   const chatCtx = useContext(ChatContext);
 
   useEffect(() => {
@@ -23,15 +23,20 @@ const ChatInterface = () => {
       const fetchData = async () => {
         setLoading(true);
         const configuration = new Configuration({
-          apiKey: apiKey,
+          organization: 'org-JL4aOCF4C1gmjn9ttiPSo3Q4',
+          apiKey,
         });
+
+        // Delete the User-Agent header
+        delete configuration.baseOptions.headers['User-Agent'];
+
         const openai = new OpenAIApi(configuration);
         if (message.length === 1 && !title) {
           const response = await openai.createChatCompletion({
-            model: "gpt-3.5-turbo",
+            model: 'gpt-3.5-turbo',
             messages: [
               {
-                role: "user",
+                role: 'user',
                 content: `What would you like to call this chat? Based on this question: ${message[0]}`,
               },
             ],
@@ -43,10 +48,10 @@ const ChatInterface = () => {
           setTitle(response.data.choices[0].message.content);
         }
         const response = await openai.createChatCompletion({
-          model: "gpt-3.5-turbo",
+          model: 'gpt-3.5-turbo',
           messages: [
             {
-              role: "user",
+              role: 'user',
               content: `provide an answer based on the chat: ${chat} particularly based on the last question asked by the user: ${message.slice(
                 -1
               )}`,
@@ -89,8 +94,8 @@ const ChatInterface = () => {
   useEffect(() => {
     if (chatCtx.startNewChat === true) {
       setMessage([]);
-      setAnswer("");
-      setTitle("");
+      setAnswer('');
+      setTitle('');
       setChat([]);
     }
   }, [chatCtx.startNewChat]);
@@ -98,7 +103,7 @@ const ChatInterface = () => {
   useEffect(() => {
     if (chatCtx.chat && chatCtx.title) {
       setMessage([]);
-      setAnswer("");
+      setAnswer('');
       setTitle(chatCtx.title);
       setChat(chatCtx.chat);
     }

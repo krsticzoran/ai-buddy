@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import "./menu-button.css";
+import React, { useContext } from 'react';
+import './menu-button.css';
 
-import { ChatContext } from "../../../../store/chat-context";
+import { ChatContext } from '../../../../store/chat-context';
 
 const MenuButton = () => {
   const chatCtx = useContext(ChatContext);

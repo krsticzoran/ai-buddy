@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import "./button.css";
-import RecordingDots from "./RecordingDots";
-import { useSpeechRecognition } from "react-speech-kit";
+import React, { useState, useEffect } from 'react';
+import './button.css';
+import RecordingDots from './RecordingDots';
+import { useSpeechRecognition } from 'react-speech-kit';
 
-import SendButton from "./SendButton";
-import Microphone from "./Microphone";
-import { MemoizedSound } from "./Sound";
+import SendButton from './SendButton';
+import Microphone from './Microphone';
+import { MemoizedSound } from './Sound';
 
 const ButtonContainer = (props) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const { listen, stop } = useSpeechRecognition({
     onResult: (result) => {
       setValue(result);
@@ -27,10 +27,10 @@ const ButtonContainer = (props) => {
     if (props.isRecording) {
       listen();
     }
-    if (!props.isRecording && value !== "") {
+    if (!props.isRecording && value !== '') {
       props.handleVoiceInput(value);
       stop();
-      setValue("");
+      setValue('');
     }
   }, [props.isRecording]);
 
@@ -44,7 +44,7 @@ const ButtonContainer = (props) => {
         <RecordingDots recordingStop={props.recordingStop} />
       )}
 
-      {props.input === "" && (
+      {props.input === '' && (
         <Microphone
           onClick={clickHandler}
           recordingStart={props.recordingStart}

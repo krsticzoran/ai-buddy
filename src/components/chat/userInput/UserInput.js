@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import "./user-input.css";
+import React, { useState, useEffect } from 'react';
+import './user-input.css';
 
-import { FormControl } from "react-bootstrap";
+import { FormControl } from 'react-bootstrap';
 
-import UserInputContainer from "./UserInputContainer/UserInputContainer";
-import ButtonContainer from "./buttons/ButtonContainer";
+import UserInputContainer from './UserInputContainer/UserInputContainer';
+import ButtonContainer from './buttons/ButtonContainer';
 
 const UserInput = (props) => {
-  const [input, setInput] = useState("");
-  const [voice, setVoice] = useState("");
+  const [input, setInput] = useState('');
+  const [voice, setVoice] = useState('');
   const [isRecording, setIsRecording] = useState(false);
 
   const recordingStart = () => {
@@ -20,7 +20,7 @@ const UserInput = (props) => {
 
   const handleClick = () => {
     props.onData(input);
-    setInput("");
+    setInput('');
   };
 
   const handleVoiceInput = (value) => {
@@ -30,7 +30,7 @@ const UserInput = (props) => {
   useEffect(() => {
     if (voice.length) {
       props.onData(voice);
-      setVoice("");
+      setVoice('');
     }
   }, [voice]);
 
@@ -39,25 +39,25 @@ const UserInput = (props) => {
   };
 
   const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       event.preventDefault();
       props.onData(input);
-      setInput("");
+      setInput('');
     }
   };
 
   return (
     <UserInputContainer>
       <FormControl
-        placeholder={isRecording ? "" : "Type your message here"}
+        placeholder={isRecording ? '' : 'Type your message here'}
         type="text"
         value={input}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         className={
           props.isLoading
-            ? "border-0 form-disabled py-3 "
-            : "border-0 form-control py-3 "
+            ? 'border-0 form-disabled py-3 '
+            : 'border-0 form-control py-3 '
         }
         disabled={props.isLoading}
       />

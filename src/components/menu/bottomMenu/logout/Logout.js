@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import "./logout.css";
-import { AuthContext } from "../../../../store/auth-contex";
+import React, { useContext } from 'react';
+import './logout.css';
+import { AuthContext } from '../../../../store/auth-contex';
 
 const Logout = () => {
   const authCtx = useContext(AuthContext);

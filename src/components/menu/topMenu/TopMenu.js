@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
-import "./top-menu.css";
+import React, { useContext, useEffect, useState } from 'react';
+import './top-menu.css';
 
-import { AuthContext } from "../../../store/auth-contex";
-import { get, ref } from "firebase/database";
-import { db } from "../../../firebase";
+import { AuthContext } from '../../../store/auth-contex';
+import { get, ref } from 'firebase/database';
+import { db } from '../../../firebase';
 
-import MenuButton from "./menuButton/MenuButton";
+import MenuButton from './menuButton/MenuButton';
 
 const TopMenu = () => {
   const authCtx = useContext(AuthContext);
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
 
   useEffect(() => {
     const getUserData = async () => {

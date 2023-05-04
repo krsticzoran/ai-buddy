@@ -1,5 +1,5 @@
-import { Container, Row, Col, InputGroup } from "react-bootstrap";
-import "./user-input-container.css";
+import React, { Container, Row, Col, InputGroup } from 'react-bootstrap';
+import './user-input-container.css';
 
 const FormContainer = (props) => {
   return (

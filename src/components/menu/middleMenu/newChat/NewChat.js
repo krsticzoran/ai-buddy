@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
-import { ChatContext } from "../../../../store/chat-context";
-import "./new-chat.css";
+import React, { useContext } from 'react';
+import { ChatContext } from '../../../../store/chat-context';
+import './new-chat.css';
 
 const NewChat = () => {
   const chatCtx = useContext(ChatContext);
 
   const newChatHandler = () => {
-    chatCtx.titleHandler("new chat");
+    chatCtx.titleHandler('new chat');
     chatCtx.start();
     chatCtx.isMenuOpen && chatCtx.toggleMenu(false);
   };
