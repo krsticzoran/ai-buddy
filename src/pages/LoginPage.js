@@ -1,16 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import './page.css';
 
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase.js';
-
-import { AuthContext } from '../store/auth-contex';
+import { useSelector, useDispatch } from 'react-redux';
 
 import LoginFormContainer from '../components/loginFormContainer/LoginFormContainer';
 
 const LoginPage = () => {
-  const authCtx = useContext(AuthContext);
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.isLoggedIn);
   const [loginError, setLoginError] = useState(null);
 
   const handleLogin = async (event) => {
@@ -22,15 +22,16 @@ const LoginPage = () => {
         email.value,
         password.value
       );
+
       const uid = userCredential.user.uid;
-      authCtx.addId(uid);
-      authCtx.login();
+      dispatch({ type: 'userId', uid: uid });
+      dispatch({ type: 'login' });
     } catch (error) {
       setLoginError(error.message);
     }
   };
 
-  if (authCtx.isLoggedIn) {
+  if (isLoggedIn) {
     return <Navigate to="/app" />;
   }
 

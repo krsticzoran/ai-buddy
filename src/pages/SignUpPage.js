@@ -1,17 +1,17 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import './page.css';
 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { db, auth } from '../firebase.js';
 import { ref, set } from 'firebase/database';
-
-import { AuthContext } from '../store/auth-contex';
+import { useSelector, useDispatch } from 'react-redux';
 
 import LoginFormContainer from '../components/loginFormContainer/LoginFormContainer.js';
 
 const SignUpForm = () => {
-  const authCtx = useContext(AuthContext);
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.isLoggedIn);
   const [signUpError, setSignUpError] = useState(null);
   const userNameRef = useRef();
 
@@ -35,14 +35,14 @@ const SignUpForm = () => {
         email: email.value,
         username: username.value,
       });
-      authCtx.addId(uid);
-      authCtx.login();
+      dispatch({ type: 'userId', uid: uid });
+      dispatch({ type: 'login' });
     } catch (error) {
       console.error(error);
       setSignUpError('Incorrect email or password. Please try again.');
     }
   };
-  if (authCtx.isLoggedIn) {
+  if (isLoggedIn) {
     return <Navigate to="/app" />;
   }
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route, Routes, BrowserRouter, Navigate } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-import { AuthContextProvider } from './store/auth-contex';
+import store from './store/store';
 import { ChatContextProvider } from './store/chat-context';
 
 import AppPage from './pages/AppPage';
@@ -10,7 +11,7 @@ import SignUpPage from './pages/SignUpPage';
 
 const App = () => {
   return (
-    <AuthContextProvider>
+    <Provider store={store}>
       <ChatContextProvider>
         <BrowserRouter>
           <Routes>
@@ -22,7 +23,7 @@ const App = () => {
           </Routes>
         </BrowserRouter>
       </ChatContextProvider>
-    </AuthContextProvider>
+    </Provider>
   );
 };
 

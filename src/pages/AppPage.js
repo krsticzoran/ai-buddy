@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { Container, Row, Col } from 'react-bootstrap';
-import { AuthContext } from '../store/auth-contex';
+import { useSelector } from 'react-redux';
 
 import Chat from '../components/chat/Chat';
 import Menu from '../components/menu/Menu';
 
 const AppPage = () => {
-  const authCtx = useContext(AuthContext);
+  const isLoggedIn = useSelector((state) => state.isLoggedIn);
 
-  if (!authCtx.isLoggedIn) {
+  if (!isLoggedIn) {
     return <Navigate to="/login" />;
   }
 
