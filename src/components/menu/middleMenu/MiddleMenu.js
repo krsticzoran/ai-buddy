@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../../store/auth-contex';
+import { useSelector } from 'react-redux';
 import NewChat from './newChat/NewChat';
 import './middle-menu.css';
 import { get, ref } from 'firebase/database';
@@ -7,7 +7,7 @@ import { db } from '../../../firebase';
 import { ChatContext } from '../../../store/chat-context';
 
 const ChatHistory = () => {
-  const authCtx = useContext(AuthContext);
+  const uid = useSelector((state) => state.uid);
   const chatCtx = useContext(ChatContext);
   const [title, setTitle] = useState({});
   const [key, setKey] = useState('');
@@ -20,9 +20,7 @@ const ChatHistory = () => {
 
   useEffect(() => {
     const getUserChat = async () => {
-      const snapshot = await get(
-        ref(db, `users/${authCtx.uid}/history/${key}`)
-      );
+      const snapshot = await get(ref(db, `users/${uid}/history/${key}`));
 
       if (snapshot.exists()) {
         chatCtx.titleHandler(key);
@@ -35,8 +33,8 @@ const ChatHistory = () => {
 
   useEffect(() => {
     const getUserData = async () => {
-      if (authCtx.uid) {
-        const snapshot = await get(ref(db, `users/${authCtx.uid}/history`));
+      if (uid) {
+        const snapshot = await get(ref(db, `users/${uid}/history`));
         setTitle({});
         snapshot.exists() && setTitle(snapshot.val());
       }
@@ -45,7 +43,7 @@ const ChatHistory = () => {
     getUserData();
 
     chatCtx.cancelTitle();
-  }, [authCtx.uid, chatCtx.isNewTitle]);
+  }, [uid, chatCtx.isNewTitle]);
 
   useEffect(() => {
     setActiveTitle(chatCtx.title);

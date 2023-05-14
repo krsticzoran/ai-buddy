@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../../../store/auth-contex';
+import { useSelector } from 'react-redux';
 import { ChatContext } from '../../../../store/chat-context';
 import { ref, set } from 'firebase/database';
 import { db } from '../../../../firebase';
@@ -7,13 +7,13 @@ import { db } from '../../../../firebase';
 import './clear-conversation.css';
 
 const ClearCoversation = () => {
-  const authCtx = useContext(AuthContext);
+  const uid = useSelector((state) => state.uid);
   const chatCtx = useContext(ChatContext);
 
   const clearChatHandler = async () => {
-    if (authCtx.uid) {
-      await set(ref(db, `users/${authCtx.uid}/history`), null);
-      console.log('Chat history cleared.');
+    if (uid) {
+      await set(ref(db, `users/${uid}/history`), null);
+
       chatCtx.start();
       chatCtx.addTitle();
     }

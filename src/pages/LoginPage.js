@@ -11,6 +11,7 @@ import LoginFormContainer from '../components/loginFormContainer/LoginFormContai
 const LoginPage = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
+
   const [loginError, setLoginError] = useState(null);
 
   const handleLogin = async (event) => {
@@ -24,8 +25,8 @@ const LoginPage = () => {
       );
 
       const uid = userCredential.user.uid;
-      dispatch({ type: 'userId', uid: uid });
-      dispatch({ type: 'login' });
+
+      dispatch({ type: 'login', uid: uid });
     } catch (error) {
       setLoginError(error.message);
     }

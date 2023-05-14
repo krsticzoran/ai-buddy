@@ -35,8 +35,7 @@ const SignUpForm = () => {
         email: email.value,
         username: username.value,
       });
-      dispatch({ type: 'userId', uid: uid });
-      dispatch({ type: 'login' });
+      dispatch({ type: 'login', uid: uid });
     } catch (error) {
       console.error(error);
       setSignUpError('Incorrect email or password. Please try again.');

@@ -1,13 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './logout.css';
-import { AuthContext } from '../../../../store/auth-contex';
 
+import { useDispatch } from 'react-redux';
 const Logout = () => {
-  const authCtx = useContext(AuthContext);
+  const dispatch = useDispatch();
+  const logoutUser = () => {
+    dispatch({ type: 'logout' });
+  };
 
   return (
     <button
-      onClick={authCtx.logout}
+      onClick={logoutUser}
       className="logout btn text-start rounded-lg text-decoration-none w-100 "
     >
       <i className="fas fa-sign-out-alt me-2"></i>
