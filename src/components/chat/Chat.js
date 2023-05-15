@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { Configuration, OpenAIApi } from 'openai';
 import ChatCard from './chatCard/ChatCard';
 import { MemoizedUserInput } from './userInput/UserInput';
-import { AuthContext } from '../../store/auth-contex';
+import { useSelector } from 'react-redux';
 import { set, ref } from 'firebase/database';
 import { db } from '../../firebase';
 import { ChatContext } from '../../store/chat-context';
@@ -10,7 +10,7 @@ import { ChatContext } from '../../store/chat-context';
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const ChatInterface = () => {
-  const authCtx = useContext(AuthContext);
+  const uid = useSelector((state) => state.uid);
   const [message, setMessage] = useState([]);
   const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -81,7 +81,7 @@ const ChatInterface = () => {
   useEffect(() => {
     const setTitleData = async () => {
       if (title) {
-        await set(ref(db, `users/${authCtx.uid}/history/${title}`), {
+        await set(ref(db, `users/${uid}/history/${title}`), {
           ...chat,
         });
 

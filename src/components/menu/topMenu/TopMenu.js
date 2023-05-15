@@ -1,27 +1,28 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './top-menu.css';
+import { useSelector } from 'react-redux';
 
-import { AuthContext } from '../../../store/auth-contex';
 import { get, ref } from 'firebase/database';
 import { db } from '../../../firebase';
 
 import MenuButton from './menuButton/MenuButton';
 
 const TopMenu = () => {
-  const authCtx = useContext(AuthContext);
+  const uid = useSelector((state) => state.uid);
+
   const [username, setUsername] = useState('');
 
   useEffect(() => {
     const getUserData = async () => {
-      if (authCtx.uid) {
-        const snapshot = await get(ref(db, `users/${authCtx.uid}/username`));
+      if (uid) {
+        const snapshot = await get(ref(db, `users/${uid}/username`));
         if (snapshot.exists()) {
           setUsername(snapshot.val());
         }
       }
     };
     getUserData();
-  }, [authCtx.uid]);
+  }, [uid]);
 
   return (
     <div className="px-3 ">
