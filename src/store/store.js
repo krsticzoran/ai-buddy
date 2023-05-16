@@ -1,26 +1,21 @@
-import { createStore } from 'redux';
+import { createSlice, configureStore } from '@reduxjs/toolkit';
 
-const authReducer = (state = { isLoggedIn: false, uid: '' }, action) => {
-  switch (action.type) {
-    case 'login':
-      return {
-        isLoggedIn: true,
-        uid: action.uid,
-      };
-    case 'logout':
-      return {
-        isLoggedIn: false,
-        uid: '',
-      };
-    case 'userId':
-      return {
-        ...state,
-        uid: action.uid,
-      };
-    default:
-      return state;
-  }
-};
+const authSlice = createSlice({
+  name: 'auth',
+  initialState: { isLoggedIn: false, uid: '' },
+  reducers: {
+    login(state, action) {
+      (state.isLoggedIn = true), (state.uid = action.uid);
+    },
+    logout(state) {
+      (state.isLoggedIn = false), (state.uid = '');
+    },
+  },
+});
 
-const store = createStore(authReducer);
+const store = configureStore({
+  reducer: authSlice.reducer,
+});
+
+export const authActions = authSlice.actions;
 export default store;
