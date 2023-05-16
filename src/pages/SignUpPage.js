@@ -6,7 +6,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { db, auth } from '../firebase.js';
 import { ref, set } from 'firebase/database';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { authActions } from '../store/store';
 import LoginFormContainer from '../components/loginFormContainer/LoginFormContainer.js';
 
 const SignUpForm = () => {
@@ -35,7 +35,7 @@ const SignUpForm = () => {
         email: email.value,
         username: username.value,
       });
-      dispatch({ type: 'login', uid: uid });
+      dispatch(authActions.login(uid));
     } catch (error) {
       console.error(error);
       setSignUpError('Incorrect email or password. Please try again.');

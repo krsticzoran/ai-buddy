@@ -5,7 +5,7 @@ import './page.css';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase.js';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { authActions } from '../store/store';
 import LoginFormContainer from '../components/loginFormContainer/LoginFormContainer';
 
 const LoginPage = () => {
@@ -26,7 +26,7 @@ const LoginPage = () => {
 
       const uid = userCredential.user.uid;
 
-      dispatch({ type: 'login', uid: uid });
+      dispatch(authActions.login(uid));
     } catch (error) {
       setLoginError(error.message);
     }

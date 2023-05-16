@@ -1,11 +1,11 @@
 import React from 'react';
 import './logout.css';
-
+import { authActions } from '../../../../store/store';
 import { useDispatch } from 'react-redux';
 const Logout = () => {
   const dispatch = useDispatch();
   const logoutUser = () => {
-    dispatch({ type: 'logout' });
+    dispatch(authActions.logout());
   };
 
   return (
