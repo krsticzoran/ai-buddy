@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './logout.css';
 import { authActions } from '../../../../store/store';
 import { useDispatch } from 'react-redux';
+import { ChatContext } from './../../../../store/chat-context';
 const Logout = () => {
+  const chatCtx = useContext(ChatContext);
   const dispatch = useDispatch();
   const logoutUser = () => {
     dispatch(authActions.logout());
+    chatCtx.chatHandler('');
   };
 
   return (

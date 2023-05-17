@@ -1,18 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './menu-button.css';
-
-import { ChatContext } from '../../../../store/chat-context';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { menuActions } from './../../../../store/store';
 const MenuButton = () => {
-  const chatCtx = useContext(ChatContext);
+  const dispatch = useDispatch();
+  const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
 
   const toggleMenu = () => {
-    chatCtx.isMenuOpen ? chatCtx.toggleMenu(false) : chatCtx.toggleMenu(true);
+    dispatch(menuActions.toggleMenu());
   };
 
   return (
     <button onClick={toggleMenu} className="menu-button">
-      {chatCtx.isMenuOpen ? (
+      {isMenuOpen ? (
         <i className="fa-solid fa-xmark"></i>
       ) : (
         <i className="fa-solid fa-bars"></i>

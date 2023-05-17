@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import NewChat from './newChat/NewChat';
 import './middle-menu.css';
 import { get, ref } from 'firebase/database';
 import { db } from '../../../firebase';
 import { ChatContext } from '../../../store/chat-context';
-
+import { menuActions } from '../../../store/store';
 const ChatHistory = () => {
-  const uid = useSelector((state) => state.uid);
+  const dispatch = useDispatch();
+  const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
+  const uid = useSelector((state) => state.auth.uid);
   const chatCtx = useContext(ChatContext);
   const [title, setTitle] = useState({});
   const [key, setKey] = useState('');
@@ -15,7 +17,7 @@ const ChatHistory = () => {
 
   const clickHandler = (key) => {
     setKey(key);
-    chatCtx.isMenuOpen && chatCtx.toggleMenu(false);
+    isMenuOpen && dispatch(menuActions.toggleMenu());
   };
 
   useEffect(() => {
@@ -52,7 +54,7 @@ const ChatHistory = () => {
   return (
     <div
       className={`chat-history px-3  ${
-        chatCtx.isMenuOpen ? 'chat-history-display-in' : 'chat-history-display'
+        isMenuOpen ? 'chat-history-display-in' : 'chat-history-display'
       } `}
     >
       <NewChat></NewChat>

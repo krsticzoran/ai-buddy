@@ -8,7 +8,7 @@ import { db } from '../../../firebase';
 import MenuButton from './menuButton/MenuButton';
 
 const TopMenu = () => {
-  const uid = useSelector((state) => state.uid);
+  const uid = useSelector((state) => state.auth.uid);
 
   const [username, setUsername] = useState('');
 

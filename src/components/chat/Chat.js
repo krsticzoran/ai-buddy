@@ -10,7 +10,7 @@ import { ChatContext } from '../../store/chat-context';
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const ChatInterface = () => {
-  const uid = useSelector((state) => state.uid);
+  const uid = useSelector((state) => state.auth.uid);
   const [message, setMessage] = useState([]);
   const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(false);

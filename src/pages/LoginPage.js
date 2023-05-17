@@ -10,7 +10,7 @@ import LoginFormContainer from '../components/loginFormContainer/LoginFormContai
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state) => state.isLoggedIn);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const [loginError, setLoginError] = useState(null);
 

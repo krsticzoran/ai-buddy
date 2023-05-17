@@ -8,7 +8,7 @@ import Chat from '../components/chat/Chat';
 import Menu from '../components/menu/Menu';
 
 const AppPage = () => {
-  const isLoggedIn = useSelector((state) => state.isLoggedIn);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   if (!isLoggedIn) {
     return <Navigate to="/login" />;

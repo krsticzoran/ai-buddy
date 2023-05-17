@@ -1,16 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Logout from './logout/Logout.js';
 import ClearCoversation from './clear/ClearConversation.js';
 
-import { ChatContext } from '../../../store/chat-context.js';
 import './bottom-menu.css';
-
+import { useSelector } from 'react-redux';
 const BottomMenu = () => {
-  const ctxCHat = useContext(ChatContext);
+  const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
   return (
     <div
       className={`account px-3 ${
-        ctxCHat.isMenuOpen ? 'account-display-in' : 'account-display'
+        isMenuOpen ? 'account-display-in' : 'account-display'
       }`}
     >
       <div className="account-border ">

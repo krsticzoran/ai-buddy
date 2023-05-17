@@ -13,9 +13,20 @@ const authSlice = createSlice({
   },
 });
 
+const menuSlice = createSlice({
+  name: 'menu',
+  initialState: { isMenuOpen: false },
+  reducers: {
+    toggleMenu(state) {
+      state.isMenuOpen = !state.isMenuOpen;
+    },
+  },
+});
+
 const store = configureStore({
-  reducer: authSlice.reducer,
+  reducer: { auth: authSlice.reducer, menu: menuSlice.reducer },
 });
 
 export const authActions = authSlice.actions;
+export const menuActions = menuSlice.actions;
 export default store;
