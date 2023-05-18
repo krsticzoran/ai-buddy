@@ -7,10 +7,11 @@ import { db } from '../../../../firebase';
 import './clear-conversation.css';
 
 const ClearCoversation = () => {
-  const uid = useSelector((state) => state.uid);
+  const uid = useSelector((state) => state.auth.uid);
   const chatCtx = useContext(ChatContext);
 
   const clearChatHandler = async () => {
+    console.log(uid);
     if (uid) {
       await set(ref(db, `users/${uid}/history`), null);
 

@@ -6,7 +6,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { db, auth } from '../firebase.js';
 import { ref, set } from 'firebase/database';
 import { useSelector, useDispatch } from 'react-redux';
-import { authActions } from '../store/auth-slice';
+import { authActions } from '../store/auth';
 import LoginFormContainer from '../components/loginFormContainer/LoginFormContainer.js';
 
 const SignUpForm = () => {
