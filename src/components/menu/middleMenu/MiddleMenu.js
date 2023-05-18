@@ -5,7 +5,7 @@ import './middle-menu.css';
 import { get, ref } from 'firebase/database';
 import { db } from '../../../firebase';
 import { ChatContext } from '../../../store/chat-context';
-import { menuActions } from '../../../store/store';
+import { menuActions } from '../../../store/menu-slice';
 const ChatHistory = () => {
   const dispatch = useDispatch();
   const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);

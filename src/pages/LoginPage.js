@@ -5,7 +5,7 @@ import './page.css';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase.js';
 import { useSelector, useDispatch } from 'react-redux';
-import { authActions } from '../store/store';
+import { authActions } from '../store/auth-slice';
 import LoginFormContainer from '../components/loginFormContainer/LoginFormContainer';
 
 const LoginPage = () => {

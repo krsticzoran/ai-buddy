@@ -1,32 +1,10 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 
-const authSlice = createSlice({
-  name: 'auth',
-  initialState: { isLoggedIn: false, uid: '' },
-  reducers: {
-    login(state, action) {
-      (state.isLoggedIn = true), (state.uid = action.payload);
-    },
-    logout(state) {
-      (state.isLoggedIn = false), (state.uid = '');
-    },
-  },
-});
-
-const menuSlice = createSlice({
-  name: 'menu',
-  initialState: { isMenuOpen: false },
-  reducers: {
-    toggleMenu(state) {
-      state.isMenuOpen = !state.isMenuOpen;
-    },
-  },
-});
+import authReducer from './auth-slice';
+import menuReducer from './menu-slice';
 
 const store = configureStore({
-  reducer: { auth: authSlice.reducer, menu: menuSlice.reducer },
+  reducer: { auth: authReducer, menu: menuReducer },
 });
 
-export const authActions = authSlice.actions;
-export const menuActions = menuSlice.actions;
 export default store;

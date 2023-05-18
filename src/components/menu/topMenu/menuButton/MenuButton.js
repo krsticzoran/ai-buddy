@@ -1,7 +1,7 @@
 import React from 'react';
 import './menu-button.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { menuActions } from './../../../../store/store';
+import { menuActions } from './../../../../store/menu-slice';
 const MenuButton = () => {
   const dispatch = useDispatch();
   const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);

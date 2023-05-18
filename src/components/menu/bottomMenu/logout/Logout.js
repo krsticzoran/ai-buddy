@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './logout.css';
-import { authActions } from '../../../../store/store';
+import { authActions } from '../../../../store/auth-slice';
 import { useDispatch } from 'react-redux';
 import { ChatContext } from './../../../../store/chat-context';
 const Logout = () => {
