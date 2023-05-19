@@ -2,15 +2,18 @@ import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { Configuration, OpenAIApi } from 'openai';
 import ChatCard from './chatCard/ChatCard';
 import { MemoizedUserInput } from './userInput/UserInput';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { set, ref } from 'firebase/database';
 import { db } from '../../firebase';
 import { ChatContext } from '../../store/chat-context';
+import { newChatActions } from './../../store/startNewChat';
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const ChatInterface = () => {
+  const dispatch = useDispatch();
   const uid = useSelector((state) => state.auth.uid);
+  const isNewChat = useSelector((state) => state.newChat.isNewChat);
   const [message, setMessage] = useState([]);
   const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -42,7 +45,7 @@ const ChatInterface = () => {
             ],
           });
           chatCtx.addTitle();
-          chatCtx.end();
+          dispatch(newChatActions.finish());
           chatCtx.titleHandler(response.data.choices[0].message.content);
 
           setTitle(response.data.choices[0].message.content);
@@ -85,20 +88,20 @@ const ChatInterface = () => {
           ...chat,
         });
 
-        chatCtx.end();
+        dispatch(newChatActions.finish());
       }
     };
     setTitleData();
   }, [title, chat]);
 
   useEffect(() => {
-    if (chatCtx.startNewChat === true) {
+    if (isNewChat === true) {
       setMessage([]);
       setAnswer('');
       setTitle('');
       setChat([]);
     }
-  }, [chatCtx.startNewChat]);
+  }, [isNewChat]);
 
   useEffect(() => {
     if (chatCtx.chat && chatCtx.title) {
