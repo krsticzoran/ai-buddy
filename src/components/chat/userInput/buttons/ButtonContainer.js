@@ -4,7 +4,7 @@ import RecordingDots from './RecordingDots';
 import { useSpeechRecognition } from 'react-speech-kit';
 
 import SendButton from './SendButton';
-import Microphone from './Microphone';
+import Microphone from './microphone/Microphone';
 import { MemoizedSound } from './Sound';
 
 const ButtonContainer = (props) => {
