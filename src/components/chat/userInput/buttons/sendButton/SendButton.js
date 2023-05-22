@@ -1,6 +1,6 @@
 import React from 'react';
-import LoadingDots from './LoadingDots';
-import './button.css';
+import LoadingDots from '../LoadingDots';
+import '../button.css';
 
 const SendButton = (props) => {
   return props.isLoading ? (

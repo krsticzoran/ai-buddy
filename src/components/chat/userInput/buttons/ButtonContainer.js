@@ -3,7 +3,7 @@ import './button.css';
 import RecordingDots from './RecordingDots';
 import { useSpeechRecognition } from 'react-speech-kit';
 
-import SendButton from './SendButton';
+import SendButton from './sendButton/SendButton';
 import Microphone from './microphone/Microphone';
 import { MemoizedSound } from './Sound';
 
