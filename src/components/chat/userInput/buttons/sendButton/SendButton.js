@@ -1,5 +1,5 @@
 import React from 'react';
-import LoadingDots from '../LoadingDots';
+import LoadingDots from '../loadingDots/LoadingDots';
 import '../button.css';
 
 const SendButton = (props) => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './button.css';
+import '../button.css';
 
 const LoadingDots = () => {
   const [dots, setDots] = useState('.');

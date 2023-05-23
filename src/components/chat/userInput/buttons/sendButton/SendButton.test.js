@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import SendButton from './SendButton';
+import SendButton from '../sendButton/SendButton';
 
 test('renders button', () => {
   const mock = jest.fn();
@@ -9,6 +9,7 @@ test('renders button', () => {
 
   // Find the button element
   const button = screen.getByRole('button');
+  screen.logTestingPlaygroundURL();
 
   // Simulate clicking the button
   user.click(button);
