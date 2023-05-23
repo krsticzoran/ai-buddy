@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './button.css';
-import RecordingDots from './RecordingDots';
+import RecordingDots from './recordingDots/RecordingDots';
 import { useSpeechRecognition } from 'react-speech-kit';
 
 import SendButton from './sendButton/SendButton';

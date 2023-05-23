@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import LoadingDots from './LoadingDots';
 
 test('renders loading dots', () => {
@@ -12,28 +12,22 @@ test('renders loading dots', () => {
   expect(loadingDots).toBeInTheDocument();
 });
 
-test('updates dots animation', () => {
+test('updates dots animation', async () => {
   // Render the component
   render(<LoadingDots />);
 
   // Find the loading dots element
   const loadingDots = screen.getByText('.');
 
-  // Wait for the animation to update
-  setTimeout(() => {
-    // Assertion - Verify the number of dots after the first update
-    expect(loadingDots.textContent).toBe('..');
+  await waitFor(() => expect(loadingDots.textContent).toBe('..'), {
+    timeout: 400,
+  });
 
-    // Wait for the animation to update again
-    setTimeout(() => {
-      // Assertion - Verify the number of dots after the second update
-      expect(loadingDots.textContent).toBe('...');
+  await waitFor(() => expect(loadingDots.textContent).toBe('...'), {
+    timeout: 400,
+  });
 
-      // Wait for the animation to update again
-      setTimeout(() => {
-        // Assertion - Verify the number of dots after the third update
-        expect(loadingDots.textContent).toBe('.');
-      }, 400);
-    }, 400);
-  }, 400);
+  await waitFor(() => expect(loadingDots.textContent).toBe('.'), {
+    timeout: 400,
+  });
 });

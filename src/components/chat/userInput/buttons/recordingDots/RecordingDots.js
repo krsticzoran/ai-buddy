@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const RecordingDots = (props) => {
-  const [dots, setDots] = useState('');
+  const [dots, setDots] = useState('.');
 
   useEffect(() => {
     const intervalId = setInterval(() => {
