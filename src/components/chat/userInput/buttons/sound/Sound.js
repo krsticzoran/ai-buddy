@@ -1,5 +1,5 @@
-import React, { useState, useEffect} from 'react';
-import './button.css';
+import React, { useState, useEffect } from 'react';
+import '../button.css';
 
 const Sound = (props) => {
   const [soundOn, setSoundOn] = useState(true);

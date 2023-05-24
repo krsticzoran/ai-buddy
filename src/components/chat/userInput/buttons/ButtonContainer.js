@@ -5,7 +5,7 @@ import { useSpeechRecognition } from 'react-speech-kit';
 
 import SendButton from './sendButton/SendButton';
 import Microphone from './microphone/Microphone';
-import { MemoizedSound } from './Sound';
+import { MemoizedSound } from './sound/Sound';
 
 const ButtonContainer = (props) => {
   const [value, setValue] = useState('');
