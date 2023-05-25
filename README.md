@@ -10,6 +10,6 @@ Password: z12345<br /><br />
 AI-buddy is an advanced version of ChatGPT that enables users to talk with AI, which can enhance the user experience as well as serve for practicing English language speaking. <br /><br />
 
 The app is built in React and Bootstrap.
-The project was primarily created to gain experience in React and practice using various React features such as useState, useEffect, useRef, useContext, useCallback, and React.memo.
+The project was primarily created to gain experience in React and practice using various React features such as useState, useEffect, useRef, useContext, Redux Toolkit, useCallback, and React.memo.
 
 <br /><br />
