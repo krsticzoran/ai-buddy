@@ -3,22 +3,34 @@ import '../button.css';
 
 const Sound = (props) => {
   const [soundOn, setSoundOn] = useState(true);
+
   useEffect(() => {
+    let voices = [];
+
     if (soundOn && props.answer.length) {
       const utterance = new SpeechSynthesisUtterance(props.answer);
-      const voices = window.speechSynthesis.getVoices();
-      utterance.voice = voices[0];
-      utterance.pitch = 1;
-      utterance.rate = 1;
-      utterance.volume = 1;
-      window.speechSynthesis.speak(utterance);
+
+      const fetchVoices = () => {
+        setTimeout(() => {
+          voices = window.speechSynthesis.getVoices();
+          utterance.voice = voices[0];
+          utterance.pitch = 1;
+          utterance.rate = 1;
+          utterance.volume = 1;
+          window.speechSynthesis.speak(utterance);
+        }, 100);
+      };
+
+      fetchVoices();
     }
+
+    return () => {
+      window.speechSynthesis.cancel();
+    };
   }, [props.answer, soundOn]);
 
   const toggleSound = () => {
     setSoundOn((prevState) => !prevState);
-
-    soundOn && window.speechSynthesis.cancel();
   };
 
   return (
