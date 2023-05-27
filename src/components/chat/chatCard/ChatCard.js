@@ -22,6 +22,7 @@ const ChatCard = (props) => {
                   className={
                     index % 2 === 0 ? 'chat-card-color' : 'chat-card-color-dark'
                   }
+                  data-testid="chat-message"
                 >
                   <Card.Body className="chat-card-padding text-dark ">
                     {message}
