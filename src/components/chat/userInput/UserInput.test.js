@@ -45,5 +45,12 @@ describe('UserInput component', () => {
 
     // Verify the typed value
     expect(inputElement).toHaveValue('Test input');
+    expect(inputElement).toHaveClass('form-control');
+  });
+
+  test('checks if form is disabled when isLoading is true', () => {
+    render(<MemoizedUserInput onData={jest.fn()} isLoading={true} answer="" />);
+    const inputElement = screen.getByRole('textbox');
+    expect(inputElement).toHaveClass('form-disabled');
   });
 });
