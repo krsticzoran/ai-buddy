@@ -40,9 +40,10 @@ describe('UserInput component', () => {
     expect(inputElement).toBeInTheDocument();
 
     // Type input in the field
-    user.click(inputElement);
-    user.keyboard('Test input');
-
+    act(() => {
+      user.click(inputElement);
+      user.keyboard('Test input');
+    });
     // Verify the typed value
     expect(inputElement).toHaveValue('Test input');
     expect(inputElement).toHaveClass('form-control');

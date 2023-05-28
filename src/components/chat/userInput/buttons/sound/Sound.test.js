@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import { MemoizedSound } from './Sound';
 
@@ -44,13 +44,17 @@ test('toggles the sound on and off', async () => {
   expect(iconElement).toHaveClass('fa-volume-high');
 
   // Click the button to toggle sound off
-  user.click(button);
+  act(() => {
+    user.click(button);
+  });
   await waitFor(() => {
     expect(iconElement).toHaveClass('fa-volume-off');
   });
 
   // Click the button again to toggle sound on
-  user.click(button);
+  act(() => {
+    user.click(button);
+  });
   await waitFor(() => {
     expect(iconElement).toHaveClass('fa-volume-high');
   });

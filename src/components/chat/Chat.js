@@ -10,7 +10,7 @@ import { newChatActions } from './../../store/startNewChat';
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
-const ChatInterface = () => {
+const Chat = () => {
   const dispatch = useDispatch();
   const uid = useSelector((state) => state.auth.uid);
   const isNewChat = useSelector((state) => state.newChat.isNewChat);
@@ -124,4 +124,4 @@ const ChatInterface = () => {
   );
 };
 
-export default ChatInterface;
+export default Chat;
