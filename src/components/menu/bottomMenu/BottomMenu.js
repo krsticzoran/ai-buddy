@@ -1,6 +1,6 @@
 import React from 'react';
 import Logout from './logout/Logout.js';
-import ClearCoversation from './clear/ClearConversation.js';
+import ClearConversation from './clear/ClearConversation.js';
 
 import './bottom-menu.css';
 import { useSelector } from 'react-redux';
@@ -13,7 +13,7 @@ const BottomMenu = () => {
       }`}
     >
       <div className="account-border ">
-        <ClearCoversation></ClearCoversation>
+        <ClearConversation></ClearConversation>
         <Logout></Logout>
       </div>
     </div>

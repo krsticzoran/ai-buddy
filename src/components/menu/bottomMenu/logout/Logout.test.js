@@ -18,6 +18,7 @@ test('renders logout button', () => {
       <Logout onClick={mock} />
     </Provider>
   );
+
   const logoutButton = screen.getByText(/Log out/i);
 
   expect(logoutButton).toBeInTheDocument();

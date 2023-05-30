@@ -3,10 +3,12 @@ import { useSelector } from 'react-redux';
 import { ChatContext } from '../../../../store/chat-context';
 import { ref, set } from 'firebase/database';
 import { db } from '../../../../firebase';
-
+import { useDispatch } from 'react-redux';
+import { newChatActions } from '../../../../store/startNewChat';
 import './clear-conversation.css';
 
-const ClearCoversation = () => {
+const ClearConversation = () => {
+  const dispatch = useDispatch();
   const uid = useSelector((state) => state.auth.uid);
   const chatCtx = useContext(ChatContext);
 
@@ -15,7 +17,7 @@ const ClearCoversation = () => {
     if (uid) {
       await set(ref(db, `users/${uid}/history`), null);
 
-      chatCtx.start();
+      dispatch(newChatActions.start());
       chatCtx.addTitle();
     }
   };
@@ -30,4 +32,4 @@ const ClearCoversation = () => {
     </button>
   );
 };
-export default ClearCoversation;
+export default ClearConversation;
