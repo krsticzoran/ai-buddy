@@ -18,7 +18,7 @@ const chatCtx = {
   chatHandler: jest.fn(),
 };
 
-test('renders logout button', async () => {
+test('renders logout button and triggers necessary actions on click', async () => {
   const dispatchMock = jest.fn();
   const originalDispatch = store.dispatch;
   store.dispatch = dispatchMock;
