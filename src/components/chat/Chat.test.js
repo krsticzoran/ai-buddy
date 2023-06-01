@@ -1,9 +1,9 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Chat from './Chat';
-import { OpenAIApi, openai } from 'openai';
+import { Configuration, OpenAIApi, openai } from 'openai';
 
 // Mock the store
 const mockStore = configureStore([]);
@@ -43,4 +43,9 @@ test('renders Chat component correctly', async () => {
       <Chat />
     </Provider>
   );
+
+  const inputElement = screen.getByPlaceholderText('Type your message here');
+  const buttons = screen.getAllByRole('button');
+  expect(buttons).toHaveLength(3);
+  expect(inputElement).toBeInTheDocument();
 });
