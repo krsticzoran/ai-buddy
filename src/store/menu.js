@@ -5,7 +5,10 @@ const menuSlice = createSlice({
   initialState: { isMenuOpen: false },
   reducers: {
     toggleMenu(state) {
-      state.isMenuOpen = !state.isMenuOpen;
+      return {
+        ...state,
+        isMenuOpen: !state.isMenuOpen,
+      };
     },
   },
 });
