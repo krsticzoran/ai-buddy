@@ -1,9 +1,8 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import { ChatContext } from '../../../../store/chat-context';
 
-import user from '@testing-library/user-event';
 import Logout from './Logout';
 import { authActions } from '../../../../store/auth';
 
@@ -19,9 +18,7 @@ const chatCtx = {
 };
 
 test('renders logout button and triggers necessary actions on click', async () => {
-  const dispatchMock = jest.fn();
-  const originalDispatch = store.dispatch;
-  store.dispatch = dispatchMock;
+  const dispatchMock = jest.spyOn(store, 'dispatch');
 
   render(
     <Provider store={store}>
@@ -33,15 +30,18 @@ test('renders logout button and triggers necessary actions on click', async () =
 
   const logoutButton = screen.getByText(/Log out/i);
 
-  user.click(logoutButton);
+  expect(logoutButton).toBeInTheDocument();
+
+  fireEvent.click(logoutButton);
 
   await waitFor(() => {
     expect(chatCtx.chatHandler).toHaveBeenCalled();
     expect(dispatchMock).toHaveBeenCalledWith(authActions.logout());
+    setTimeout(() => {
+      expect(logoutButton).not.toBeInTheDocument();
+    }, 100);
   });
 
-  expect(logoutButton).toBeInTheDocument();
-
-  // Restore the original dispatch function
-  store.dispatch = originalDispatch;
+  // Restore the original implementation of the dispatch function
+  dispatchMock.mockRestore();
 });
