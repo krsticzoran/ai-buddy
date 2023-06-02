@@ -1,4 +1,10 @@
-import { render, screen, waitFor, fireEvent } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitFor,
+  fireEvent,
+  act,
+} from '@testing-library/react';
 import MenuButton from './MenuButton';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
