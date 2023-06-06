@@ -1,16 +1,20 @@
 import React, { useContext } from 'react';
 import './new-chat.css';
 import { ChatContext } from './../../../../store/chat-context';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { newChatActions } from './../../../../store/startNewChat.js';
+import { menuActions } from '../../../../store/menu';
 const NewChat = () => {
+  const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
+
   const dispatch = useDispatch();
   const chatCtx = useContext(ChatContext);
 
   const newChatHandler = () => {
     chatCtx.titleHandler('new chat');
     dispatch(newChatActions.start());
-    chatCtx.isMenuOpen && chatCtx.toggleMenu(false);
+
+    isMenuOpen && dispatch(menuActions.toggleMenu());
   };
 
   return (

@@ -8,6 +8,7 @@ const mockStore = configureMockStore();
 const store = mockStore({
   auth: { uid: 'user123' },
   newChat: { isNewChat: false },
+  menu: { isMenuOpen: false },
 });
 
 test('renders new chat button', () => {
