@@ -11,11 +11,16 @@ const store = mockStore({
 });
 
 test('renders new chat button', () => {
+  const dispatchMock = jest.spyOn(store, 'dispatch');
+
   render(
     <Provider store={store}>
       <NewChat />
     </Provider>
   );
   const button = screen.getByText(/new chat/i);
+
+  fireEvent.click(button);
   expect(button).toBeInTheDocument();
+  expect(dispatchMock).toHaveBeenCalledWith(newChatActions.start());
 });
