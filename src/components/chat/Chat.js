@@ -77,8 +77,10 @@ const Chat = () => {
     setChat((prevMessages) => [...prevMessages, answer]);
   };
   const handleData = useCallback((input) => {
-    setChat((prevMessage) => [...prevMessage, input]);
-    setMessage((prevMessage) => [...prevMessage, input]);
+    if (input !== '') {
+      setChat((prevMessage) => [...prevMessage, input]);
+      setMessage((prevMessage) => [...prevMessage, input]);
+    }
   }, []);
 
   useEffect(() => {
