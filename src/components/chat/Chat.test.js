@@ -3,7 +3,6 @@ import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Chat from './Chat';
-import { Configuration, OpenAIApi, openai } from 'openai';
 
 // Mock the store
 const mockStore = configureStore([]);
